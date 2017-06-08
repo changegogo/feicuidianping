@@ -28,11 +28,11 @@
 	<script type="text/javascript" src="js/AjaxRequest.js"></script>
 	<script type="text/javascript" src="js/WdatePicker.js"></script>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
-	
+	<script src="assets/js/bootstrap.js"></script>
 	
    <!-- <script src="assets/js/custom.js"></script>-->
     
-    <script src="assets/js/bootstrap.js"></script>
+    
     <script src="js/bootstrap-table.min.js"></script>
     <script src="js/bootstrap-table-zh-CN.js" type="text/javascript"></script> 
      <!-- METISMENU SCRIPTS -->
@@ -233,18 +233,22 @@ $(function(){
             sidePagination: "server",				//服务端分页
             contentType: "application/json",		//请求数据内容格式 默认是 application/json
             dataType: "json",						//期待返回数据类型
-            method: "get",							//请求方式
+            method: "post",							//请求方式
             height: 360,
             cache: false,
             queryParamsType: "limit",				//查询参数组织方式
             queryParams: function getParams(params) {
-            	params.largeArea = $("#large_Area").find('option:selected').html();
-				params.schName = $("#sch_Name").find('option:selected').html();
-				params.cusName = $("#major").find('option:selected').html();
-				params.role = $("#teacherrole").find('option:selected').html();
-				params.startDate = $("#startDate").val()==""?"":$("#startDate").val();
-				params.endDate = $("#endDate").val()==""?"":$("#endDate").val();
-				
+            	
+            	/*var conditionData={
+            		largeArea : $("#large_Area").find('option:selected').val(),
+					schName : $("#sch_Name").find('option:selected').val(),
+					cusName : $("#major").find('option:selected').val(),
+					role : $("#teacherrole").find('option:selected').val(),
+					startDate : $("#startDate").val()==""?"":$("#startDate").val(),
+					endDate : $("#endDate").val()==""?"":$("#endDate").val()
+            	}
+            	
+				params.name =JSON.stringify(conditionData);*/
             	console.log(params);
                 return params;
             },
@@ -323,59 +327,12 @@ $(function(){
 
 
 
-	
-	function chaxun() {
-		/*if (form2.startDate.value == "") { //验证用户名是否为空
-			alert("请输入起始日期！");form2.startDate.focus();return false;
-		}
-		if (form2.endDate.value == "") { //验证密码是否为空
-			alert("请输入结束日期！");form2.endDate.focus();return false;
-		}*/
-		var conditionData = {
-			    largeArea : $("#large_Area").find('option:selected').html(),
-				schName : $("#sch_Name").find('option:selected').html(),
-				cusName : $("#major").find('option:selected').html(),
-				role : $("#teacherrole").find('option:selected').html(),
-				startDate : $("#startDate").val(),
-				endDate : $("#endDate").val()
-            	
-		};
-		var url = "/SearchServer/selectServlet";
 
 
-		$.ajax({
-			async : false,
-			method : "POST",
-			traditional : false,
-			data : {
-				name : JSON.stringify(conditionData)
-			},
-			url : url,
-			success : function(data) {
-
-				if (data == "查询没有结果!") {
-					console.log(params);
-					$("#selectDiv").empty();
-					alert(data);
-				} else {
-					//document.getElementById("exportss").style = "block";
-					
-					$("#selectDiv").show();
-				}
-
-				
-				
-				
-			},
-			error : function(error) {}
-		});
-
-	
-	}
-    
+/*
     $("#searchBtn").click(function(){
-    	chaxun();
-    })
+    	$("#tb_departments").bootstrapTable('refresh');
+    })*/
 
 })
 	
