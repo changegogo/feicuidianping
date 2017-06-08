@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户登录</title>
+<style type="text/css">
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#login {
+	width: 280px; /*设置宽度*/
+	padding: 4px; /*设置内边距*/
+	height: 156px; /*设置高度*/
+	background-color: #546B51; /*设置背景颜色*/
+	margin: 0 auto;
+	position: relative; /*脱离文档流*/
+	top: 40%; /*偏移*/
+}
+
+#loginUl li { /*设置登录所用的<li>标记的样式*/
+	padding: 5px;
+}
+
+#loginUl { /*设置登录所用的<ul>标记的样式*/
+	list-style: none;
+	margin: 0px;
+}
+
+#loginTitle { /*设置登录窗口的标题样式*/
+	padding: 10px;
+	background-color: #FCFBF0;
+	color: #1B7F5D;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px;
+}
+</style>
+<script type="text/javascript">
+function loginSubmit(form2){
+	if(form2.username.value == ""){
+		alert("请输入用户名!")
+		form2.username.focus();
+		return false;
+	}
+	if(form2.pwd.value == ""){
+		alert("密码不能为空!");
+		form2.pwd.focus();
+		return false;
+	}
+}
+
+</script>
+<script>"undefined"==typeof CODE_LIVE&&(!function(e){var t={nonSecure:"8123",secure:"8124"},c={nonSecure:"http://",secure:"https://"},r={nonSecure:"127.0.0.1",secure:"gapdebug.local.genuitec.com"},n="https:"===window.location.protocol?"secure":"nonSecure";script=e.createElement("script"),script.type="text/javascript",script.async=!0,script.src=c[n]+r[n]+":"+t[n]+"/codelive-assets/bundle.js",e.getElementsByTagName("head")[0].appendChild(script)}(document),CODE_LIVE=!0);</script></head>
+<body bgcolor="#F0F0F0" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc2-0" data-genuitec-path="/SearchServer/WebRoot/Login.html">
+
+	<div id="login" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc2-0" data-genuitec-path="/SearchServer/WebRoot/Login.html">
+		<form name="form2" method="post" action="" id="form2">
+			<div id="loginTitle">
+				用户登录</b>
+			</div>
+			<div id="loginContent" style="background-color:#FFFEF9; margin:0px;">
+				<ul id="loginUl">
+					<li>用户名：<input type="text" name="username" style="width:120px"
+						onkeydown="if(event.keyCode==13){this.form.pwd.focus();}">
+					</li>
+					<li>密　码：<input type="password"
+						name="pwd" style="width:120px"
+						onkeydown="if(event.keyCode==13){loginSubmit(this.form)}">&nbsp;
+					</li>
+					<li style="padding-left:40px;"><input name="Submit"
+						type="button" onclick="loginSubmit(this.form)" value="登录">
+						&nbsp; <input name="Submit2" type="reset" value="重置">
+					</li>
+				</ul>
+			</div>
+			<div style="background-color:#FEFEFC;height:15px;"></div>
+		</form>
+	</div>
+</body>
+</html>

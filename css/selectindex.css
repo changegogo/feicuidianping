@@ -1,0 +1,190 @@
+[genuitec-file-id="wc2-7"],[genuitec-lp-path="/SearchServer/WebRoot/css/selectindex.css"],[genuitec-lp-enabled=false]{
+  /* for codelive */
+}
+
+strong{
+	padding-right:15%;
+	font-weight: normal;
+}
+
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+.header{
+	padding:20px 0;
+}
+.innerContainer{
+	width:1000px;
+	margin:0 auto;
+}
+.main{
+	background-color:#1ba747;
+	/*padding-bottom: 10%;*/
+}
+.contentContainer{
+	width:1000px;
+	margin:0 auto;
+	margin-top:36px;
+	margin-bottom:36px;
+	background:#18272c;
+	box-shadow: 1px  1px 10px 1px #fff;
+}
+
+.upContainer{
+	width:940px;
+	margin-left:30px;
+	padding:20px 0;
+	/*overflow:hidden;*/
+	
+}
+.btnContainer{
+	padding-bottom:20px;
+	margin-left:50%;
+}
+.title{
+	text-align:left;
+	padding-left:29px;
+	height:50px;
+	line-height:50px;
+	font-size:27px;
+	color:#fff;
+	background: #41b641;
+}
+
+#form2{
+	width:940px;
+	margin:0 auto;
+}
+#large_Area,#sch_Name,#major,#teacherrole{
+	margin:0 auto;
+	width:160px;
+	height:25px;
+}
+.searchBtn{
+	margin-right:200px;
+}
+.searchBtn,.outPutBtn{
+	display:inline-block;
+	width:100px;
+	height:30px;
+	background:#008740;
+  	font-size:20px;
+	color:#fff;
+	border:none;
+}
+
+.ChoiceText{
+	font-size:20px;
+	color:#fff;
+}
+.choiceTxt{
+	font-size:20px;
+	color:#fff;
+}
+.row{
+	width:270px;
+	height:40px;
+}
+.row:nth-child(1),.row:nth-child(2),.row:nth-child(4),.row:nth-child(5){
+	margin-right:65px;
+}
+input.Wdate{
+	width:160px;
+	height:25px;
+}
+.footer{
+	width:100%;
+	height:76px;
+	background:#3a3a3a;
+}
+.footerText{
+	text-align:center;
+	font-size:14px;
+	color:#fff;
+
+
+}
+.footerText1{
+	padding-top:14px;
+}
+#selectDiv{
+	padding:20px;
+	background:#18272c;
+	width:1000px;
+	margin:0 auto;
+	height:372px;
+
+}
+#selectDiv th{
+	color:#fff;
+}
+.tableHead{
+	font-size:27px;
+	font-weight:900;
+	color:#fff;
+	line-height:30px;
+	padding-bottom:20px;
+}
+#tab{
+	width:940px;
+	margin:0 auto;
+	color:#fff;
+}
+#tab th,#tab td{
+	width:150px;
+	padding:4px 0;
+	text-align:center;
+}
+/***分页功能区**/
+.pageArea{
+	overflow: hidden;
+}
+.pageAreaText{
+	float:left;
+	line-height:24px;
+}
+/***分页提示区**/
+.pageReminder{
+	margin:20px 0;
+	float: left;
+	height:36px;
+
+}
+.pageAreaText{
+	color:#fff;
+	font-size:14px;
+}
+.pageAreaNum{
+	color:#fff;
+}
+.pageAreaInp{
+	width:100px;
+	color:#4D4D4D;	
+}
+.pageBtn{
+	display:inline-block;
+	width:50px;
+	height:30px;
+	line-height:30px;
+	background: #337ab7;
+	border-radius: 2px;
+	text-align:center;
+	color:#fff;
+	cursor: pointer;
+}
+/**分页效果区**/
+.dividePageContainer{
+	margin:0 auto;
+	float:right;
+}
+.dividePageContainer a{
+	cursor:pointer;
+}
+.dividePageContainer .active{
+	background:#aaF;
+	color:#000;
+}
+

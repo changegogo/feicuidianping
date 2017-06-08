@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>教师评价系统后台操作页面</title>
+    
+    <link rel="stylesheet" href="assets/css/basic.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap-table.min.css" />
+  <!--  <link rel="stylesheet" href="css/style-metro.css"/>-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <style type="text/css">
+    	.chartstyle {
+    		width: 50%;
+    		height: 400px;
+    		float: left;
+    	}
+    	.ldchartstyle {
+    		border-left: 1px dashed gray;
+    	}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar  navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">翡翠教育</a>
+            </div>
+        </nav>
+        <!-- 导航 -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+					<!--查询主页面的侧边栏按钮-->
+                    <li>
+                        <a href="index.html"><i class="fa fa-dashboard"></i>查询导出</a>
+                    </li>
+                    <!--编辑菜单栏按钮-->
+                    <li>
+                        <a href="edit.html"><i class="fa fa-edit "></i>老师管理</a>
+                    </li>
+                    <li>
+                        <a  href="abnormal.html"><i class="fa fa-anchor"></i>异常数据</a>
+                    </li>
+                    <li>
+                        <a class="active-menu" href=" dataAnalysis.html"><i class="fa fa-bar-chart-o"></i>数据分析</a>
+                    </li>
+                </ul>     
+             </div>
+
+        </nav>
+        <!-- 主页面  -->
+        <div id="page-wrapper" style="min-height:700px;">
+            <div id="page-inner">
+            	<!--主页面头部-->
+                <div class="row">
+                    <div class="col-md-12">                  
+                       <!--<h1 class="page-subhead-line">请选择查询条件并编辑：</h1>-->
+                    </div>
+                </div>
+	               
+			        <div class="portlet box grey">
+					    <div class="portlet-title">
+						    <div class="caption"><i class="icon-user"></i>异常数据</div>
+					    </div>
+					    <div class="panel panel-default" style="margin-bottom:10px;">
+							<div class="panel-heading">查询条件</div>
+							<div class="panel-body">
+								<form id="formSearch" class="form-horizontal">
+									<div class="form-group" style="margin-top: 15px">
+										<label class="control-label col-sm-1"
+											for="txt_search_departmentname">大&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区</label>
+										<div class="col-sm-2">
+											<select class="form-control" id="bigArea">
+										    	<option value text="请选择">请选择</option>
+										    </select> 
+										</div>
+										<label class="control-label col-sm-1" for="txt_search_statu">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校</label>
+										<div class="col-sm-2">
+											<select class="form-control"  id="schools">
+										      <option value txt="请选择">请选择</option>
+										    </select>
+										</div>
+										<label class="control-label col-sm-1" for="txt_search_statu">专业</label>
+										<div class="col-sm-2">
+											 <select class="form-control "  id="profession">
+										      <option value txt="请选择">请选择</option>
+										    </select>
+										</div>
+										<label class="control-label col-sm-1" for="txt_search_statu">角色</label>
+										<div class="col-sm-2">
+											 <select class="form-control "  id="role">
+										      <option value text="请选择">请选择</option>
+										      <option value='0' text="讲师">讲师</option>
+										      <option value='1' text="班主任">班主任</option>
+										      <option value='2' text="就业">就业</option>
+										      <option value='3' text="在线老师">在线老师</option>
+										    </select>
+										</div>
+									</div>
+									<div class="form-group">
+										<!--日期-->
+										<label class="control-label col-sm-1"
+											for="txt_search_departmentname">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份</label>
+										<div class="col-sm-2">
+											<select class="form-control" id="bigArea">
+										    	<option value text="请选择">请选择</option>
+										    	<option value text="2017">2017</option>
+										    	<option value text="2018">2018</option>
+										    	<option value text="2019">2019</option>
+										    	<option value text="2020">2020</option>
+											</select> 
+										</div>
+										<!--查询按钮-->
+										<div class="col-sm-2">
+											<button type="button"  id="searchBtn" class="btn btn-primary">查询</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>    
+						<div >
+						   <div class="chartstyle" id="zxChart"></div>
+						   <div class="chartstyle ldchartstyle" id="ldChart"></div>
+					    </div>
+				    </div>	
+			</div>
+        </div>
+    </div>
+
+	<!--尾部-->
+    <div id="footer-sec">
+		<div class="footer">
+			<div class="innerContainer">
+				<p class="footerText footerText1">总部地址:北京市海淀区小南庄怡秀园甲一号亿德大厦10层
+					电话：010-61943240</p>
+				<p class="footerText">Copyright © 2005-2020 北京翡翠教育科技有限公司，All
+					Rights Reserved 京ICP备12036804号-23</p>
+			</div>
+		</div>
+    </div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap-table.min.js"></script>
+    <script src="js/bootstrap-table-zh-CN.js"></script> 
+    <script src="js/WdatePicker.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/dataAnalysis.js"></script>
+</body>
+</html>

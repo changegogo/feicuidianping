@@ -1,0 +1,10 @@
+[
+	{"name": "京津冀","schoolcode": 0},
+	{"name": "上海区","schoolcode": 1},
+	{"name": "西北区","schoolcode": 2},
+	{"name": "华中区","schoolcode": 3},
+	{"name": "华北区","schoolcode": 4},
+	{"name": "华南区","schoolcode": 5},
+	{"name": "华东区","schoolcode": 6},
+	{"name": "西南区","schoolcode": 7}
+]

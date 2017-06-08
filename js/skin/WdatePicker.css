@@ -1,0 +1,15 @@
+[genuitec-file-id="wc2-10"],[genuitec-lp-path="/SearchServer/WebRoot/js/skin/WdatePicker.css"],[genuitec-lp-enabled=false]{
+  /* for codelive */
+}
+
+.Wdate{
+	border:#999 1px solid;
+	height:20px;
+	background:#fff url(datePicker.gif) no-repeat right;
+}
+.Wdate::-ms-clear{display:none;}
+
+.WdateFmtErr{
+	font-weight:bold;
+	color:red;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>"undefined"==typeof CODE_LIVE&&(!function(e){var t={nonSecure:"8123",secure:"8124"},c={nonSecure:"http://",secure:"https://"},r={nonSecure:"127.0.0.1",secure:"gapdebug.local.genuitec.com"},n="https:"===window.location.protocol?"secure":"nonSecure";script=e.createElement("script"),script.type="text/javascript",script.async=!0,script.src=c[n]+r[n]+":"+t[n]+"/codelive-assets/bundle.js",e.getElementsByTagName("head")[0].appendChild(script)}(document),CODE_LIVE=!0);</script></head>
+<body data-genuitec-lp-enabled="false" data-genuitec-file-id="wc2-19" data-genuitec-path="/SearchServer/WebRoot/test.html">
+
+1.首页查询接口:<br data-genuitec-lp-enabled="false" data-genuitec-file-id="wc2-19" data-genuitec-path="/SearchServer/WebRoot/test.html">
+url: editPageServlet<br>
+请求的参数：<br>
+largeName  大区名称<br>
+schoolName 校区的名称<br>
+majorName  专业名称<br>
+
+返回的数据格式为：
+{"code":200,
+    "msg":" success",
+    "results":[
+    	{
+            "teacherName":"Dear Linda",
+            "role":"讲师",
+            "className":"web前端1班"
+            "majorName":"web前端",
+            "majorId":1,
+            "schoolId":1
+        }
+    
+    ]
+}
+<br>
+--------------------------------------------------------------------------------------
+<br>
+2.新增数据接口:<br>
+url:editPageInsertServlet<br>
+请求参数:<br>
+schoolName 校区名称<br>
+teacherName 老师名称<br>
+className  班级名称<br>
+role      角色<br>
+majorName  专业名称<br>
+
+ 
+返回数据：
+直接返回一个字符串："插入成功！"<br>
+---------------------------------------------------------------------<br>
+
+3.删除某一条数据的接口:<br>
+url : deleteEditPageServlet<br>
+请求参数:<br>
+schoolName 校区名称<br>
+teacherName 老师名称<br>
+className  班级名称<br>
+role      角色<br>
+majorName  专业名称<br>
+
+返回数据：<br>
+直接返回一个字符串："删除成功！"<br>
+
+---------------------------------------------------------------------<br>
+4.修改校区老师的信息接口：<br>
+url:updateEditInfoServlet
+请求参数:<br>
+json参数的名称：updateJsonData<br>
+{
+	oldTeacherName :"张应龙",
+	oldRole :"讲师",
+	oldClassName:"java一班",
+	oldMajorName:"java",
+	oldSchoolName:"北京中关村",
+	newTeacherName :"刘源作",
+	newRole :"讲师",
+	newClassName:"web一班",
+	newMajorName:"web",
+	newSchoolName:"北京国贸",
+}
+
+返回数据：<br>
+直接返回一个字符串："修改成功！"<br>
+</body>
+</html>

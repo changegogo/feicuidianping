@@ -1,0 +1,78 @@
+﻿[
+  [
+  	{"sch": "北京中关村","subcode": [6,7,0,1,2,3,4,5]},
+  	{"sch": "北京国贸","subcode": [0,6,7]},
+  	{"sch": "北京通州","subcode": [3,7]},
+  	{"sch": "北京回龙观","subcode": [0,7,0,1]},
+  	{"sch": "北京艾特","subcode": [3]},
+  	{"sch": "天津南开","subcode": [0]},
+  	{"sch": "天津新安","subcode": [1]},
+  	{"sch": "石家庄民族路","subcode": [0]}
+  ],
+  [
+  	{"sch": "上海虹口完美","subcode": [6]},
+  	{"sch": "上海虹口卓新","subcode": [0]},
+  	{"sch": "上海徐汇","subcode": [1]},
+  	{"sch": "上海株洲路","subcode": [3]},
+  	{"sch": "上海浦东","subcode": [0]}
+  ],
+  [
+  	{"sch": "西安国贸","subcode": [0,6]},
+  	{"sch": "西安华融","subcode": [1,6]},
+  	{"sch": "西安太白","subcode": [0,2]},
+  	{"sch": "西安钟楼","subcode": [3]},
+  	{"sch": "太原小店","subcode": [0,2]},
+  	{"sch": "太原长风街","subcode": [1]},
+  	{"sch": "郑州国泰","subcode": [1]},
+  	{"sch": "郑州金水","subcode": [0]}
+  ],
+  [
+  	{"sch": "长沙书院","subcode": [0,6]},
+  	{"sch": "长沙雨花","subcode": [2,3]},
+  	{"sch": "长沙中扬","subcode": [2,3]},
+  	{"sch": "武汉洪山","subcode": [0,6]},
+  	{"sch": "武汉江汉","subcode": [0]},
+  	{"sch": "南昌红谷滩","subcode": [0]},
+  	{"sch": "南昌二分","subcode": [1]}
+  ],
+  [
+  	{"sch": "济南历下","subcode": [0,2]},
+  	{"sch": "济南新泺","subcode": [1]},
+  	{"sch": "青岛南区","subcode": [0,2]},
+  	{"sch": "沈阳沈河","subcode": [6]},
+  	{"sch": "沈阳和平","subcode": [0]},
+  	{"sch": "大连中山","subcode": [0]}
+  ],
+  [
+  	{"sch": "深圳华强北","subcode": [0]},
+  	{"sch": "深圳罗湖","subcode": [6]},
+  	{"sch": "深圳福田","subcode": [1]},
+  	{"sch": "广州黄埔","subcode": [1]},
+  	{"sch": "广州元岗","subcode": [6]},
+  	{"sch": "广州长兴","subcode": [0]},
+  	{"sch": "柳州广场路","subcode": [0]},
+  	{"sch": "南宁西乡塘","subcode": [0]},
+  	{"sch": "福州台江","subcode": [0]}
+  ],
+  [
+  	{"sch": "合肥新都会","subcode": [2]},
+  	{"sch": "合肥长江路","subcode": [0]},
+  	{"sch": "南京玄武","subcode": [2]},
+  	{"sch": "南京雨花台","subcode": [0]},
+  	{"sch": "苏州姑苏","subcode": [0]},
+  	{"sch": "常州钟楼","subcode": [0]},
+  	{"sch": "无锡滨湖","subcode": [1]},
+  	{"sch": "杭州下城","subcode": [0]},
+  	{"sch": "杭州二分","subcode": [3]},
+  	{"sch": "宁波鄞州","subcode": [0,3]}
+  ],
+  [
+  	{"sch": "重庆完美","subcode": [6]},
+  	{"sch": "重庆天陈","subcode": [3]},
+  	{"sch": "重庆渝中","subcode": [0,1,3]},
+  	{"sch": "成都桐梓林","subcode": [0,2]},
+  	{"sch": "成都天府新谷","subcode": [1,4]},
+  	{"sch": "成都牛王庙","subcode": [3]},
+  	{"sch": "贵阳南明","subcode": [0]}
+  ]
+]
