@@ -315,8 +315,8 @@ $(function(){
                 console.log(params);
                 return params;
             },
-            showToggle: false,
             showRefresh: true,//刷新按钮
+            showToggle: true, // 切换视图
             showColumns: true,//列选择按钮
             buttonsAlign: "left",//按钮对齐方式
             toolbar: "#toolbar",//指定工具栏

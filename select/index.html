@@ -146,8 +146,11 @@
 										    <input class="form-control Wdate" style="height:35px;" type="text"  onclick="WdatePicker()" id="endDate" name="endDate">
 										</div>
 										<!--查询按钮-->
-										<div class="col-sm-2" style="text-align: left;">
-											<button type="button"  id="searchBtn" class="btn btn-primary">查询</button>
+										<div class="col-sm-1" style="text-align: left;">
+											<button type="button"  id="searchBtn" class="btn btn-primary" style="margin-left:40px;">查询</button>
+										</div>
+										<div class="col-sm-1" style="text-align: left;">
+											<button type="button"  id="export" class="btn btn-primary" style="display:none;" style="margin-left:50px;">导出</button>
 										</div>
 									</div>
 							</form>
@@ -271,26 +274,68 @@
 				role : $("#role").find('option:selected').html(),
 					startDate : startDate,
 					endDate : endDate
-	        	};
+	        };
 	 
-				$.ajax({
-					url: "/SearchServer/selectServlet",
+			$.ajax({
+				url: "/SearchServer/selectServlet",
 				type: "post",
 				data: {
 					name: JSON.stringify(conditionData)
 				},
-				success: function(result){
-					$('#tb_departments').bootstrapTable('load', result);
+				success: function(data){
+					if(data.code == 200){
+						$('#tb_departments').bootstrapTable('load', data.selectInfo);
+					}else{
+						alert(data.msg);
+					}
 				},
 				error: function(err){
-					alert("错误");
+					alert("网络错误");
 					$('#tb_departments').bootstrapTable('load', []);
 				}
 			});
+			$("#export").show();
 		});
+		
+		$("#export").click(function(){
+			var conditionData = {
+				largeArea : $("#bigArea").find('option:selected').html(),
+				schName : $("#schools").find('option:selected').html(),
+				cusName : $("#profession").find('option:selected').html(),
+				role : $("#role").find('option:selected').html(),
+				startDate : $("#startDate").val()==""?"":$("#startDate").val(),
+				endDate : $("#endDate").val()==""?"":$("#endDate").val()
+	        };
+	        var url = "/SearchServer/ExportssServlet";
+			$.ajax({
+				async : false,
+				method : "get",
+				traditional : false,
+				data : {
+					name : JSON.stringify(conditionData)
+				},
+				url : url,
+				success : function(data) {
+					alert(data);
+					if (data == "当前导出无结果！") {
+						return;
+					} else {
+						//location.href = "/SearchServer/xlsx/" + data;
+						location.href = 'http://tp.feicuiedu.com:8081/WebRoot/xlsx/' + data;
+					}
+				},
+				error : function(err) {
+					alert('error');
+				}
+			});
+		})
 		// 初始化table
 		$('#tb_departments').bootstrapTable({
 			dataType: "json",
+			showRefresh: true,//刷新按钮
+            showToggle: true, // 切换视图
+            showColumns: true,//列选择按钮
+            buttonsAlign: "left",//按钮对齐方式
 		    cache: false, 	// 不缓存
 		    height: 300, 	// 设置高度，会启用固定表头的特性
 		    striped: true, 	// 隔行加亮
