@@ -51,74 +51,74 @@
         <div id="page-wrapper">
             <div id="page-inner">
             	<!--主页面头部-->
-                <div class="row">
+                <div>
                     <div class="col-md-12">                  
                        <!--<h1 class="page-subhead-line">请选择查询条件并编辑：</h1>-->
                     </div>
                 </div>
 	               
-					        <div class="portlet box grey">
-							    <div class="portlet-title">
-								    <div class="caption"><i class="icon-user"></i>异常数据</div>
-							    </div>
-							    <div class="panel panel-default" style="margin-bottom:10px;">
-									<div class="panel-heading">查询条件</div>
-									<div class="panel-body">
-										<form id="formSearch" class="form-horizontal">
-											<div class="form-group" style="margin-top: 15px">
-												<label class="control-label col-sm-1"
-													for="txt_search_departmentname">大&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区</label>
-												<div class="col-sm-2">
-													<select class="form-control" id="bigArea">
-												    	<option value text="请选择">请选择</option>
-												    </select> 
-												</div>
-												<label class="control-label col-sm-1" for="txt_search_statu">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校</label>
-												<div class="col-sm-2">
-													<select class="form-control"  id="schools">
-												      <option value txt="请选择">请选择</option>
-												    </select>
-												</div>
-												<label class="control-label col-sm-1" for="txt_search_statu">专业</label>
-												<div class="col-sm-2">
-													 <select class="form-control "  id="profession">
-												      <option value txt="请选择">请选择</option>
-												    </select>
-												</div>
-												<label class="control-label col-sm-1" for="txt_search_statu">角色</label>
-												<div class="col-sm-2">
-													 <select class="form-control "  id="role">
-												      <option value text="请选择">请选择</option>
-												      <option value='0' selected text="讲师">讲师</option>
-												      <option value='1' text="班主任">班主任</option>
-												      <option value='2' text="就业">就业</option>
-												      <option value='3' text="在线老师">在线老师</option>
-												    </select>
-												</div>
-											</div>
-											<div class="form-group">
-												<!--日期-->
-												<label class="control-label col-sm-1" for="startDate">起始日期</label>
-												<div class="col-sm-2">
-												    <input class="form-control Wdate" style="height:35px;" type="text" onclick="WdatePicker()" id="startDate" name="startDate">
-												</div>
-												<label class="control-label col-sm-1" for="endDate">结束日期</label>
-												<div class="col-sm-2">
-												    <input class="form-control Wdate" style="height:35px;" type="text"  onclick="WdatePicker()" id="endDate" name="endDate">
-												</div>
-												<!--查询按钮-->
-												<div class="col-sm-2">
-													<button type="button"  id="search" class="btn btn-primary">查询</button>
-												</div>
-											</div>
-										</form>
+			        <div class="portlet box grey">
+					    <div class="portlet-title">
+						    <div class="caption"><i class="icon-user"></i>异常数据</div>
+					    </div>
+					    <div class="panel panel-default" style="margin-bottom:10px;">
+							<div class="panel-heading">查询条件</div>
+							<div class="panel-body">
+								<form id="formSearch" class="form-horizontal">
+									<div class="form-group" style="margin-top: 15px">
+										<label class="control-label col-sm-1"
+											for="txt_search_departmentname">大&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区</label>
+										<div class="col-sm-2">
+											<select class="form-control" id="bigArea">
+										    	<option value text="请选择">请选择</option>
+										    </select> 
+										</div>
+										<label class="control-label col-sm-1" for="txt_search_statu">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校</label>
+										<div class="col-sm-2">
+											<select class="form-control"  id="schools">
+										      <option value txt="请选择">请选择</option>
+										    </select>
+										</div>
+										<label class="control-label col-sm-1" for="txt_search_statu">专业</label>
+										<div class="col-sm-2">
+											 <select class="form-control "  id="profession">
+										      <option value txt="请选择">请选择</option>
+										    </select>
+										</div>
+										<label class="control-label col-sm-1" for="txt_search_statu">角色</label>
+										<div class="col-sm-2">
+											 <select class="form-control "  id="role">
+										      <option value text="请选择">请选择</option>
+										      <option value='0' selected text="讲师">讲师</option>
+										      <option value='1' text="班主任">班主任</option>
+										      <option value='2' text="就业">就业</option>
+										      <option value='3' text="在线老师">在线老师</option>
+										    </select>
+										</div>
 									</div>
-								</div>    
-								<div class="portlet-body">
-								    <table id="tb_departments"> 
-									</table>
-							    </div>
-						    </div>
+									<div class="form-group">
+										<!--日期-->
+										<label class="control-label col-sm-1" for="startDate">起始日期</label>
+										<div class="col-sm-2">
+										    <input class="form-control Wdate" style="height:35px;" type="text" onclick="WdatePicker()" id="startDate" name="startDate">
+										</div>
+										<label class="control-label col-sm-1" for="endDate">结束日期</label>
+										<div class="col-sm-2">
+										    <input class="form-control Wdate" style="height:35px;" type="text"  onclick="WdatePicker()" id="endDate" name="endDate">
+										</div>
+										<!--查询按钮-->
+										<div class="col-sm-2">
+											<button type="button"  id="search" class="btn btn-primary">查询</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>    
+						<div class="portlet-body">
+						    <table id="tb_departments"> 
+							</table>
+					    </div>
+				    </div>
 					     	
 			</div>
         </div>

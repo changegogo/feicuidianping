@@ -66,7 +66,7 @@ $(function(){
 	});
 	
 	/********************************编辑按钮的模态框------开始*************************************/
-	/**点击编辑按钮**/
+	/**点击编辑按钮，模态框显示此行的所有数据**/
 	window.dictActionEvents = {
          'click #update': function (e, value, row) {
          	    GLOBAL.type = "编辑";
@@ -76,19 +76,19 @@ $(function(){
          	    //id赋值
          	    $("#teacherId").html(row.id);
          	    //大区
-         	    $("#bigRegion option").removeAttr("selected"); //移除属性selected
-         	    $("#bigRegion").find("option[text="+row.largeAreaName+"]").attr("selected",true);
+         	    $("#bigRegion option").removeProp("selected"); //移除属性selected
+         	    $("#bigRegion").find("option[text="+row.largeAreaName+"]").prop("selected",true);
          	    //学校
          	    // 根据model框中设置的大区设置学校的内容
          	    changeModelSchool();
-         	    $("#school option").removeAttr("selected"); //移除属性selected
-         	    $("#school").find("option[text="+row.schoolName+"]").attr("selected",true);
+         	    $("#school option").removeProp("selected"); //移除属性selected
+         	    $("#school").find("option[text="+row.schoolName+"]").prop("selected",true);
 	            //专业
-	            $("#prof option").removeAttr("selected");// 移除属性selected
-	            $("#prof").find("option[text="+row.majorName+"]").attr("selected",true);
+	            $("#prof option").removeProp("selected");// 移除属性selected
+	            $("#prof").find("option[text="+row.majorName+"]").prop("selected",true);
 	            //角色
-	            $("#leixing option").removeAttr("selected");// 移除属性selected
-	            $("#leixing").find("option[text="+row.role+"]").attr("selected",true);
+	            $("#leixing option").removeProp("selected");// 移除属性selected
+	            $("#leixing").find("option[text="+row.role+"]").prop("selected",true);
 	            //班级
 	            $('#banji').val(row.className);
 	            //姓名
@@ -106,7 +106,7 @@ $(function(){
 		            type: "get",
 					success : function(data) {
 						if(data.code==200){
-							alert(data.msg);
+							alert("删除成功");
 							$("#tb_departments").bootstrapTable('refresh');
 						}else{
 							alert(data.msg);
@@ -119,7 +119,7 @@ $(function(){
 			}
         }
      }; 
-     // 根据model框中设置的大区设置学校的内容
+     //点击编辑按钮的模态框， 根据模态框中设置的大区设置学校的内容
      function changeModelSchool(){
 		$("#school").empty();
 		var code = $("#bigRegion").find('option:selected').val();
@@ -128,6 +128,7 @@ $(function(){
             $("#school").html(html);
         }else{
             var school = GLOBAL.selectData.schools[code];
+            console.log(GLOBAL.selectData);
             var html='<option value="" text="请选择" selected>请选择</option>';
             for(var i=0;i<school.length;i++){
                 html += '<option value="'+ school[i].schID +'" text="'+ school[i].sch+""+'">'+  school[i].sch  +'</option>';
@@ -237,22 +238,22 @@ $(function(){
     	$('#myModal').modal('show');
 		var pleaseText = "请选择";
     	// 大区
-        $("#bigRegion option").removeAttr("selected");
- 	    $("#bigRegion").find("option[text="+pleaseText+"]").attr("selected",true);
+        $("#bigRegion option").removeProp("selected");
+ 	    $("#bigRegion").find("option[text="+pleaseText+"]").prop("selected",true);
  	    
  	    //学校
 		// 根据model框中设置的大区设置学校的内容
 		changeModelSchool();
-		$("#school option").removeAttr("selected"); //移除属性selected
-		$("#school").find("option[text="+pleaseText+"]").attr("selected",true);
+		$("#school option").removeProp("selected"); //移除属性selected
+		$("#school").find("option[text="+pleaseText+"]").prop("selected",true);
 		
         // 专业
-		$("#prof option").removeAttr("selected");// 移除属性selected
-		$("#prof").find("option[text="+pleaseText+"]").attr("selected",true);
+		$("#prof option").removeProp("selected");// 移除属性selected
+		$("#prof").find("option[text="+pleaseText+"]").prop("selected",true);
         
         //角色
-		$("#leixing option").removeAttr("selected");// 移除属性selected
-		$("#leixing").find("option[text="+pleaseText+"]").attr("selected",true);
+		$("#leixing option").removeProp("selected");// 移除属性selected
+		$("#leixing").find("option[text="+pleaseText+"]").prop("selected",true);
 		
         // 班级
         $('#banji').val("");

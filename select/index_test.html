@@ -268,7 +268,7 @@
 		var url = "ExportssServlet";
 		$.ajax({
 			async : false,
-			method : "POST",
+			method : "get",
 			traditional : false,
 			data : {
 				name : JSON.stringify(conditionData)
@@ -411,13 +411,10 @@
 			"startDate" : document.getElementById('startDate').value,
 			"endDate" : document.getElementById('endDate').value
 		};
-		var url = "http://20.14.3.127:8888/SearchServer/selectServlet";
-
-
+		var url = "/SearchServer/selectServlet";
 		$.ajax({
-			async : false,
-			method : "POST",
-			traditional : false,
+			async : true,
+			type : "POST",
 			data : {
 				name : JSON.stringify(conditionData)
 			},
@@ -430,7 +427,8 @@
 				} else {
 					//document.getElementById("exportss").style = "block";
 					$("#exportss").show();
-					json = JSON.parse(data);
+					//json = JSON.parse(data);
+					json = data;
 				}
 
 				$("#selectDiv").show();
@@ -438,7 +436,9 @@
 				//显示第一页内容
 				fromStartToEnd(json, 1);
 			},
-			error : function(error) {}
+			error : function(error) {
+				alert("没有数据");
+			}
 		});
 
 	/* $.getJSON("json/data.json",function(data){

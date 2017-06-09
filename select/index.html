@@ -13,10 +13,10 @@
     <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
     
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+   
 	<link rel="stylesheet" href="css/select.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" href="css/selectindex.css" />
+	
     
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -57,18 +57,15 @@
             </div>
 
            <!-- <div class="header-right">
-
                 <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
                 <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
                 <a href="login.html" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
-
             </div>-->
         </nav>
         <!-- 导航 -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                
 					<!--查询主页面的侧边栏按钮-->
                     <li>
                         <a class="active-menu" href="index.html"><i class="fa fa-dashboard "></i>查询导出</a>
@@ -88,112 +85,85 @@
 
         </nav>
         <!-- 主页面  -->
+               <!-- 主页面  -->
         <div id="page-wrapper">
             <div id="page-inner">
-            	
-                <!--<div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-head-line">查询</h1>
-                    </div>
-                </div>-->
-                <!--<div class="row">-->
-                	
-                	
-	                <div class="main col-md-12">
-						<div class="contentContainer">
-							
-							<form method="post" name="form2" id="form2">
-								<div class="upContainer">
-									<div class="row left">
-										<span class="ChoiceText"><strong>大</strong>区：</span> <select
-											name="large_Area" id="large_Area" >
-											<option>请选择</option>
-											<option>京津冀</option>
-											<option>上海区</option>
-											<option>西北区</option>
-											<option>华中区</option>
-											<option>华北区</option>
-											<option>华南区</option>
-											<option>华东区</option>
-											<option>西南区</option>
-										</select>
+            	<!--主页面头部-->
+                <div class="portlet box grey">
+				    <div class="portlet-title">
+					    <div class="caption"><i class="icon-user"></i>老师管理</div>
+		                <div class="actions">
+						    <a href="#" id="btnAdd" class="btn btn-success">
+						    	<i class="icon-add"></i> 
+						    	新增
+						    </a>
+		                   <!-- <a href="#" id="btnDelete" class="btn btn-success"><i class="icon-remove"></i> 删除已选</a>-->
+		                </div>
+				    </div>
+				    <div class="panel panel-default" style="margin-bottom:10px;">
+						<div class="panel-heading">查询条件</div>
+						<div class="panel-body">
+							<form id="formSearch" class="form-horizontal">
+								<div class="form-group" style="margin-top: 15px">
+									<label class="control-label col-sm-1"
+										for="txt_search_departmentname">大&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区</label>
+									<div class="col-sm-2">
+										<select class="form-control" id="bigArea">
+									    	<option value text="请选择">请选择</option>
+									    </select> 
 									</div>
-									<div class="row left">
-										<span class="ChoiceText"><strong>校</strong>区：</span> <select
-											name="sch_Name" class="sch_Name" id="sch_Name">
-											<option>请选择</option>
-										</select>
+									<label class="control-label col-sm-1" for="txt_search_statu">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校</label>
+									<div class="col-sm-2">
+										<select class="form-control"  id="schools">
+									      <option value txt="请选择">请选择</option>
+									    </select>
 									</div>
-									<div class="row left">
-										<span class="ChoiceText"><strong>专</strong>业：</span> <select
-											name="major" id="major">
-											<option>请选择</option>
-											<option>UI设计</option>
-											<option>web前端</option>
-											<option>Android</option>
-											<option>网络营销</option>
-											<option>java</option>
-											<option>php</option>
-											<option>游戏美术</option>
-											<option>游戏程序</option>
-										</select>
+									<label class="control-label col-sm-1" for="txt_search_statu">专业</label>
+									<div class="col-sm-2">
+										<select class="form-control "  id="profession">
+									      <option value >请选择</option>
+									    </select>
 									</div>
-					
-									<div class="row left">
-										<span class="ChoiceText"><strong>角</strong>色：</span> 
-										<select
-											name="teacherrole" id="teacherrole">
-											<option>讲师</option>
-											<option>班主任</option>
-											<option>就业</option>
-										</select>
-									</div>
-					
-									<div class="row left">
-										<span class="ChoiceText">起 始 日 期：</span> <input class="Wdate"
-											type="text" onclick="WdatePicker()" id="startDate"
-											name="startDate"><br>
-									</div>
-									<div class="row left">
-										<span class="ChoiceText">结 束 日 期：</span> <input class="Wdate"
-											type="text" onclick="WdatePicker()" id="endDate" name="endDate"><br>
+									<label class="control-label col-sm-1" for="txt_search_statu">角色</label>
+									<div class="col-sm-2">
+										 <select class="form-control "  id="role">
+										    <!--<option value >请选择</option>-->
+										    <option value selected>讲师</option>
+										    <option value >班主任</option>
+										    <option value >就业</option>
+										    <option value >在线老师</option>
+									    </select>
 									</div>
 								</div>
-								<div class="btnContainer">
-									<button type="button" class="btn1 searchBtn" value="查询" name="查询" id="searchBtn"	>查询</button>
-									
-									<button type="button" class=" outPutBtn" value="导出" id="exportss"
-										onclick="exportssTab(form2)" style="display: none;">导出明细</button>
-								</div>
-								<p style="color: #FF0000; font-size:14px; text-align: right;padding-bottom:5px">使用过程中如有问题，请邮件反馈至&nbsp;&nbsp;yanxing@feicuiedu.com</p>
+								<div class="form-group">
+										<!--日期-->
+										<label class="control-label col-sm-1" for="startDate">起始日期</label>
+										<div class="col-sm-2">
+										    <input class="form-control Wdate" style="height:35px;" type="text" onclick="WdatePicker()" id="startDate" name="startDate">
+										</div>
+										<label class="control-label col-sm-1" for="endDate">结束日期</label>
+										<div class="col-sm-2">
+										    <input class="form-control Wdate" style="height:35px;" type="text"  onclick="WdatePicker()" id="endDate" name="endDate">
+										</div>
+										<!--查询按钮-->
+										<div class="col-sm-2" style="text-align: left;">
+											<button type="button"  id="searchBtn" class="btn btn-primary">查询</button>
+										</div>
+									</div>
 							</form>
 						</div>
-						<!--表格-->
-						<div id="selectDiv" class="innerContainer">
-							<table id="tb_departments">
-						    </table>
-							<!--<table border="1" align="center" id="tab">
-								<tr>
-									<th>大区</th>
-									<th>校区</th>
-									<th>教师姓名</th>
-									<th>角色</th>
-									<th>专业</th>
-									<th>班级</th>
-									<th>投票人数</th>
-									<th>平均分</th>
-									<th>月份</th>
-								</tr>
-								<tbody id="data_body">
-								</tbody>
-							</table>-->
-						</div>
-					
-					
-						
-					</div>
-           </div>
+					</div>    
+					<div class="portlet-body">
+					    <table id="tb_departments">
+						</table>
+				    </div>
+			    </div>
+			</div>
         </div>
+        
+        
+      
+        
     </div>
     
 	<!--尾部-->
@@ -208,134 +178,153 @@
 			</div>
 		</div>
     </div>-->
-
-   
-    
-   
-    
-    
-
-
 <script>
-$(function(){
-	/*******************************初始化bootstraptable -----开始************************************/
-    function actionFormatter(value) {
-         return [
-             '<button id="update"  class="btn btn-info btn-sm rightSize detailBtn" type="button"><i class="fa fa-paste"></i> 编辑</button>',
-             '<button id="remove" class="btn btn-danger btn-sm rightSize packageBtn" type="button"><i class="fa fa-envelope"></i> 删除</button>'
-         ].join('');
-	}				
-	/**bootstraptable 点击查询按钮，加载数据并显示在table表格里**/
-    function initTable() {
-      $('#tb_departments').bootstrapTable({
-            url: "/SearchServer/selectServlet",	//数据源
-            dataField: "results",					
-            sidePagination: "server",				//服务端分页
-            contentType: "application/json",		//请求数据内容格式 默认是 application/json
-            dataType: "json",						//期待返回数据类型
-            method: "post",							//请求方式
-            height: 360,
-            cache: false,
-            queryParamsType: "limit",				//查询参数组织方式
-            queryParams: function getParams(params) {
-            	
-            	/*var conditionData={
-            		largeArea : $("#large_Area").find('option:selected').val(),
-					schName : $("#sch_Name").find('option:selected').val(),
-					cusName : $("#major").find('option:selected').val(),
-					role : $("#teacherrole").find('option:selected').val(),
-					startDate : $("#startDate").val()==""?"":$("#startDate").val(),
-					endDate : $("#endDate").val()==""?"":$("#endDate").val()
-            	}
-            	
-				params.name =JSON.stringify(conditionData);*/
-            	console.log(params);
-                return params;
-            },
-            showToggle: false,
-            showRefresh: true,//刷新按钮
-            showColumns: true,//列选择按钮
-            buttonsAlign: "left",//按钮对齐方式
-            toolbar: "#toolbar",//指定工具栏
-            toolbarAlign: "right",//工具栏对齐方式
-            columns: [{
-        		field: 'id',
-        		width: 100,
-        		align: 'center',
-        		valign: 'middle',
-        		title: "id"
-            },{
-        		field: 'sch_Name',
-        		width: 100,
-        		align: 'center',
-        		valign: 'middle',
-        		title: "校区"
-            }, {
-                field: 'tea_Name',
-                width: 100,
-                title: '教师姓名',
-                align: 'center',
-                valign: 'middle',
-            },{
-                field: 'role_Level',
-                width: 100,
-                title: '角色',
-                align: 'center',
-                valign: 'middle',
-            },{
-                field: 'cus_Name',
-                width: 100,
-                title: '专业',
-                align: 'center',
-                valign: 'middle',
-            },{
-        		field: 'stu_Class',
-        		width: 100,
-        		align: 'center',
-        		valign: 'middle',
-        		title: "班级"
-            },{
-                field: 'peopleCount',
-                width: 100,
-                title: '投票人数',
-                align: 'center',
-                valign: 'middle',
-            },{
-                field: 'average',
-                width: 100,
-                title: '平均分',
-                align: 'center',
-                valign: 'middle',
-            },{
-                field: 'fill_Date',
-                width: 100,
-                title: '月份',
-                align: 'center',
-                valign: 'middle',
-            },{
-            	field: 'operate',
-            	width: 200,
-	            title: '操作',
-	            align: 'center',
-	            valign: 'middle',
-	            /*events: dictActionEvents,*/
-	            formatter: actionFormatter
-            }]
-        });
-    }
-    initTable();
 
-
-
-
-
-/*
-    $("#searchBtn").click(function(){
-    	$("#tb_departments").bootstrapTable('refresh');
-    })*/
-
-})
-	
+	$(function(){
+		/**页面进来之后的三个下拉框大区+校区+专业，从数据库拿来数据复制给大区**/
+	    var GLOBAL = GLOBAL || {};
+		//预置字符串
+	    GLOBAL.selectTips= '<option value="" text="请选择">请选择</option>';
+	    var url = "/SearchServer/recentServlet";
+	    $.ajax({
+			url: url,
+	        type: "get",
+			success : function(data) {
+				if(data.code==200){
+					GLOBAL.selectData = data.results;
+					var bigAreaArray = data.results.bigarea;
+					// model框中专业下拉框的赋值
+					profGiveVal();
+					// 查询条件上面大区赋值
+					var html = GLOBAL.selectTips;
+					for(var i=0;i<bigAreaArray.length;i++){
+						html += '<option text="'+bigAreaArray[i].name+'"value="'+ bigAreaArray[i].schoolcode +'">'+  bigAreaArray[i].name  +'</option>'
+						$("#bigArea").html(html);
+						
+					}
+	                // 查询条件上面专业赋值
+	                var html = GLOBAL.selectTips;
+	                for(var i=0;i<GLOBAL.selectData.subject.length;i++){
+	                    html += '<option value="'+ i +'">'+ GLOBAL.selectData.subject[i]  +'</option>';
+	                    $("#profession").html(html);
+	                }	
+				}else{
+					alert('没有数据');
+				}
+			},
+	        error: function (XMLHttpRequest, textStatus, errorThrown) {      
+	            alert("请求失败！");
+	        }
+	     });
+	     
+	    // model框中专业下拉框的赋值
+	    function profGiveVal(){
+			var subjects = GLOBAL.selectData.subject;
+			var html = '<option text="请选择" value="" selected>请选择</option>';
+			for(var i=0;i<subjects.length;i++){
+				html += '<option text="'+subjects[i]+'"value="'+i+'">'+ subjects[i] +'</option>';
+				$("#prof").html(html);
+			}
+		}
+	     
+	    // 查询条件出 当点击大区时，申请每个大区的所有学校的数据，并赋值给学校的下来框
+		$("#bigArea").change(function(){
+			var code = $("#bigArea").find('option:selected').val();
+			// 查询条件上面的学校下拉框清空
+			$("#schools").empty();
+	        if(code == ""){
+	            var html='<option value="" txt="请选择" selected>请选择</option>';
+	            $("#schools").html(html);
+	        }else{
+	            var schools = GLOBAL.selectData.schools[code];
+	            var html='<option value="" text="请选择" selected>请选择</option>';
+	            for(var i=0;i<schools.length;i++){
+	                //html += '<option txt="'+schools[i].sch+'"value="'+ schools[i].schID +'" text="'+ schools[i].subcode+""+'">'+  schools[i].sch  +'</option>';
+	                html += '<option value="'+ schools[i].schID +'" text="'+ schools[i].sch+""+'">'+  schools[i].sch  +'</option>';
+	                /**默认下来框的赋值**/
+	                $("#schools").html(html);
+	            }
+	        }
+		});
+			
+		// 查询按钮
+		$("#searchBtn").click(function(){
+			var startDate = $("#startDate").val();
+			if( startDate== ""){
+				alert("请输入起始日期");
+				return;
+			}
+			var endDate = $("#endDate").val();
+			if(endDate == ""){
+				alert("请输入结束日期");
+				return;
+			}
+			if( Date.parse(new Date(startDate)) > Date.parse(new Date(endDate)) ){
+				alert("起始日期不能大于结束日期");
+				return;
+			}
+			
+			var conditionData = {
+	    		largeArea :$("#bigArea").find('option:selected').html(),
+				schName : $("#schools").find('option:selected').html(),
+				cusName : $("#profession").find('option:selected').html(),
+				role : $("#role").find('option:selected').html(),
+					startDate : startDate,
+					endDate : endDate
+	        	};
+	 
+				$.ajax({
+					url: "/SearchServer/selectServlet",
+				type: "post",
+				data: {
+					name: JSON.stringify(conditionData)
+				},
+				success: function(result){
+					$('#tb_departments').bootstrapTable('load', result);
+				},
+				error: function(err){
+					alert("错误");
+					$('#tb_departments').bootstrapTable('load', []);
+				}
+			});
+		});
+		// 初始化table
+		$('#tb_departments').bootstrapTable({
+			dataType: "json",
+		    cache: false, 	// 不缓存
+		    height: 300, 	// 设置高度，会启用固定表头的特性
+		    striped: true, 	// 隔行加亮
+			columns: [{
+				field: 'large_Area',
+	    		title: "大区"
+			},{
+	    		field: 'sch_Name',
+	    		title: "校区"
+	        },{
+	    		field: 'tea_Name',
+	    		title: "教师姓名"
+	        },{
+	    		field: 'role_Level',
+	    		title: "角色"
+	        },{
+	    		field: 'cus_Name',
+	    		title: "专业"
+	        },{
+	    		field: 'stu_Class',
+	    		title: "班级"
+	        },{
+	    		field: 'peopleCount',
+	    		title: "投票人数"
+	        },{
+	    		field: 'average',
+	    		title: "平均分"
+	        },{
+	    		field: 'fill_Date',
+	    		title: "月份"
+	        }],
+	        data: []
+		});
+	});
 </script>
 
 </body>
