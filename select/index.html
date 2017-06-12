@@ -163,27 +163,33 @@
 			    </div>
 			</div>
         </div>
-        
-        
-      
-        
     </div>
-    
+    <!--加载等待-->	 
+	<div  class="modal fade" id="myModal" style="position:absolute;left:50%;top:40%;">
+		<img src="assets/img/prettyPhoto/dark_rounded/loader.gif" alt="等待图标" />
+	</div>
 	<!--尾部-->
-    <!--<div id="footer-sec">
-    	
-		<div class="footer">
+    <div id="footer-sec">
+   	    
+    	<div class="footer">
 			<div class="innerContainer">
-				<p class="footerText footerText1">总部地址:北京市海淀区小南庄怡秀园甲一号亿德大厦10层
+				<p style="text-align:center;">总部地址:北京市海淀区小南庄怡秀园甲一号亿德大厦10层
 					电话：010-61943240</p>
-				<p class="footerText">Copyright © 2005-2020 北京翡翠教育科技有限公司，All
+				<p style="text-align:center;">Copyright © 2005-2020 北京翡翠教育科技有限公司，All
 					Rights Reserved 京ICP备12036804号-23</p>
 			</div>
 		</div>
-    </div>-->
+    </div>
 <script>
 
 	$(function(){
+		//加载等待图片
+		function hideModal(){
+			$('#myModal').modal('hide');
+		}
+		function showModal(){
+			$('#myModal').modal({backdrop:'static',keyboard:false});
+		}
 		/**页面进来之后的三个下拉框大区+校区+专业，从数据库拿来数据复制给大区**/
 	    var GLOBAL = GLOBAL || {};
 		//预置字符串
@@ -282,11 +288,16 @@
 				data: {
 					name: JSON.stringify(conditionData)
 				},
+				beforeSend:function (){
+					showModal();
+				},
 				success: function(data){
 					if(data.code == 200){
 						$('#tb_departments').bootstrapTable('load', data.selectInfo);
+						hideModal();
 					}else{
 						alert(data.msg);
+						hideModal();
 					}
 				},
 				error: function(err){

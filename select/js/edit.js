@@ -1,4 +1,5 @@
 $(function(){
+	
     /**页面进来之后的三个下拉框大区+校区+专业，从数据库拿来数据复制给大区**/
     var GLOBAL = GLOBAL || {};
     //预置字符串
@@ -97,6 +98,9 @@ $(function(){
 	            $("#myModalLabel").text("编辑老师");
          	    
          },
+         'click #search':function (e, value ,row){
+         	alert("hellow");
+         },
          'click #remove': function (e, value, row) {
             if(confirm("确定要删除吗？")==true){
              	// 删除数据函数
@@ -120,7 +124,7 @@ $(function(){
         }
      }; 
      //点击编辑按钮的模态框， 根据模态框中设置的大区设置学校的内容
-     function changeModelSchool(){
+    function changeModelSchool(){
 		$("#school").empty();
 		var code = $("#bigRegion").find('option:selected').val();
         if(code==""){
@@ -315,6 +319,7 @@ $(function(){
                 console.log(params);
                 return params;
             },
+            
             showRefresh: true,//刷新按钮
             showToggle: true, // 切换视图
             showColumns: true,//列选择按钮

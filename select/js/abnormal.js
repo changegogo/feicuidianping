@@ -104,6 +104,9 @@ $(function(){
             toolbar: "#toolbar",//指定工具栏
             toolbarAlign: "right",//工具栏对齐方式
             showColumns: true,//列选择按钮
+            showExport: true,
+			exportDataType: "basic",
+			exportTypes: ['excel'],
             queryParams: function getParams(params) {
                 params.largeName = $("#bigArea").find('option:selected').html()=="请选择"?"":$("#bigArea").find('option:selected').html();
                 params.schoolName = $("#schools").find('option:selected').html()=="请选择"?"":$("#schools").find('option:selected').html();
@@ -159,7 +162,7 @@ $(function(){
                 width: 100,
                 align: 'center',
                 valign: 'middle',
-                title: "昵称"
+                title: "微信昵称"
             },{
                 field: 'average',
                 width: 100,
