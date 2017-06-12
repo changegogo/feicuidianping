@@ -283,12 +283,11 @@ $(function(){
     		alert("请选择专业!");
             return;
     	}*/
+    	//点击查询按钮，出现等待图片，直到加载数据成功后，图片消失
     	showModal();
-    	$("#tb_departments").bootstrapTable('load',function(){
+    	if($("#tb_departments").bootstrapTable('refresh')){
     		hideModal();
-    	});
-    	$("#tb_departments").bootstrapTable('refresh');
-    	
+    	}
     });
    
     //加载等待图片

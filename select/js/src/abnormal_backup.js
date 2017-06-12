@@ -35,32 +35,21 @@ $(function(){
 	$("#bigArea").change(function(){
 		$("#schools").empty();
 		var code = $("#bigArea").find('option:selected').val();
-		var schools = GLOBAL.selectData.schools[code];
-		var html='<option value="" txt="请选择" selected>请选择</option>';
-		for(var i=0;i<schools.length;i++){
-			html += '<option txt="'+schools[i].sch+'"value="'+ schools[i].schID +'" text="'+ schools[i].subcode+""+'">'+  schools[i].sch  +'</option>';
-			/**默认下来框的赋值**/
-			$("#schools").html(html);
+		if(code == ""){
+            var html='<option value="" txt="请选择" selected>请选择</option>';
+            $("#schools").html(html);
+        }else{
+			var schools = GLOBAL.selectData.schools[code];
+			var html='<option value="" txt="请选择" selected>请选择</option>';
+			for(var i=0;i<schools.length;i++){
+				html += '<option txt="'+schools[i].sch+'"value="'+ schools[i].schID +'" text="'+ schools[i].subcode+""+'">'+  schools[i].sch  +'</option>';
+				/**默认下来框的赋值**/
+				$("#schools").html(html);
+			}
 		}
 	});
-	//当点击学校时，申请每个专业的所数据，并赋值给专业的下来框
-	/*$("#schools").change(function(){
-		if($("#schools").find('option:selected').val()==""){
-			return;
-		}
-		$("#profession").empty();
-		var text = $("#schools").find('option:selected').attr("text");
-		var arr = text.split(",");
-		var subjects = GLOBAL.selectData.subject;
-        var schools = GLOBAL.selectData.schools;
-		var html=GLOBAL.selectTips;
-		for(var i=0;i<arr.length;i++){
-			html += '<option value="'+ schools[i].schID +'">'+ subjects[arr[i]]  +'</option>';
-			$("#profession").html(html);
-		}
-	});*/	
+	
     $("#search").click(function(){
-    	
     	/*var blankbigArea = $("#bigArea").find("option:selected").text()=="请选择";
     	var blankSchool = $("#schools").find("option:selected").text()=="请选择";
     	var blankProfession = $("#profession").find("option:selected").text()=="请选择";

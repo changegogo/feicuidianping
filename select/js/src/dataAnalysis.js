@@ -223,7 +223,18 @@ $(function(){
     		}
     	});
     });
-    GLOBAL.titles = ["老师出勤情况","项目讲解","培训提问","培训期间回答培训生问题","老师指导","把握培训纪律","老师讲解技巧","培训进度","实例讲解","培训后作品"];
+    /*
+     * 讲师题目
+     * 班主任题目
+     * 就业题目
+     * 在线老师题目
+     * */
+    GLOBAL.titles = [
+    	["老师出勤情况","项目讲解","培训提问","培训期间回答培训生问题","老师指导","把握培训纪律","老师讲解技巧","培训进度","实例讲解","培训后作品"],
+    	["班主任出勤情况","关心程度","巡堂","找学员沟通","缺勤关注","班级纪律","受理投诉","组织活动","资料的及时收发","整体工作评分"],
+    	["企业信息发布","企业宣讲","行业宣讲","学员活动","职业素养课程","学员沟通","简历撰写指导","模拟面试","就业服务","整体工作评分"],
+    	["老师出勤情况789","项目讲解","培训提问","培训期间回答培训生问题","老师指导","把握培训纪律","老师讲解技巧","培训进度","实例讲解","培训后作品"]
+    ];
     // 折线图点击事件,更新雷达图内容
     GLOBAL.zxChart.on('click', function (params) {
     	console.log(params);
@@ -246,15 +257,15 @@ $(function(){
 		    	//雷达图的顶部信息
 		    	GLOBAL.ldOption.title.text = name+" "+month+"评分分布";
 		    	GLOBAL.ldOption.radar.indicator.splice(0,GLOBAL.ldOption.radar.indicator.length);
-		    	if(GLOBAL.role==0){
-		    		for(var i=0; i<GLOBAL.titles.length; i++){
+		    	//if(GLOBAL.role==0){
+		    		for(var i=0; i<GLOBAL.titles[GLOBAL.role].length; i++){
 		    			var item = {
-		    				name: GLOBAL.titles[i],
+		    				name: GLOBAL.titles[GLOBAL.role][i],
 		    				max: 5
 		    			};
 		    			GLOBAL.ldOption.radar.indicator[i] = item;
 		    		}
-		    	}
+		    	//}
 		    	GLOBAL.ldOption.series[0].data[0] = {
 		    		value: data.result.scores,
 		    		name: name
