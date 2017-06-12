@@ -94,7 +94,7 @@ $(function(){
           $('#tb_departments').bootstrapTable({
             url: '/SearchServer/exceptionBeanServlet',
             method: 'get',
-            height:330,
+            height: 535,
             dataField: 'results',
             sidePagination: "server",//服务端分页
             showColumns: true,
@@ -107,6 +107,9 @@ $(function(){
             showExport: true,
 			exportDataType: "basic",
 			exportTypes: ['excel'],
+			exportOptions: {
+		        fileName: '评分异常数据'
+		    },
             queryParams: function getParams(params) {
                 params.largeName = $("#bigArea").find('option:selected').html()=="请选择"?"":$("#bigArea").find('option:selected').html();
                 params.schoolName = $("#schools").find('option:selected').html()=="请选择"?"":$("#schools").find('option:selected').html();

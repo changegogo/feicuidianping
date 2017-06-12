@@ -98,9 +98,6 @@ $(function(){
 	            $("#myModalLabel").text("编辑老师");
          	    
          },
-         'click #search':function (e, value ,row){
-         	alert("hellow");
-         },
          'click #remove': function (e, value, row) {
             if(confirm("确定要删除吗？")==true){
              	// 删除数据函数
@@ -286,8 +283,25 @@ $(function(){
     		alert("请选择专业!");
             return;
     	}*/
+    	showModal();
+    	$("#tb_departments").bootstrapTable('load',function(){
+    		hideModal();
+    	});
     	$("#tb_departments").bootstrapTable('refresh');
+    	
     });
+   
+    //加载等待图片
+	function hideModal(){
+		$('#loadingImg').modal('hide');
+	}
+	function showModal(){
+		$('#loadingImg').modal({backdrop:'static',keyboard:false});
+	}	
+   
+  
+    //加载数据过程中的ui样式
+   
     /********************************点击查询按钮----结束***************************************************/
    
    
@@ -308,7 +322,7 @@ $(function(){
             contentType: "application/json",		//请求数据内容格式 默认是 application/json
             dataType: "json",						//期待返回数据类型
             method: "get",							//请求方式
-            height: 360,
+            height: 535,
             cache: false,
             queryParamsType: "limit",				//查询参数组织方式
             queryParams: function getParams(params) {

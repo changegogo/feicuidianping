@@ -91,8 +91,8 @@
             	<!--主页面头部-->
                 <div class="portlet box grey">
 				    <div class="portlet-title">
-					    <div class="caption"><i class="icon-user"></i>老师管理</div>
-		                <div class="actions">
+					    <div class="caption"><i class="icon-user"></i>查询导出</div>
+		                <div class="actions" style="display: none;">
 						    <a href="#" id="btnAdd" class="btn btn-success">
 						    	<i class="icon-add"></i> 
 						    	新增
@@ -181,7 +181,6 @@
 		</div>
     </div>
 <script>
-
 	$(function(){
 		//加载等待图片
 		function hideModal(){
@@ -293,6 +292,9 @@
 				},
 				success: function(data){
 					if(data.code == 200){
+						if(data.selectInfo.length>0){
+							$("#export").show();
+						}
 						$('#tb_departments').bootstrapTable('load', data.selectInfo);
 						hideModal();
 					}else{
@@ -303,9 +305,10 @@
 				error: function(err){
 					alert("网络错误");
 					$('#tb_departments').bootstrapTable('load', []);
+					hideModal();
 				}
 			});
-			$("#export").show();
+			
 		});
 		
 		$("#export").click(function(){
@@ -348,8 +351,14 @@
             showColumns: true,//列选择按钮
             buttonsAlign: "left",//按钮对齐方式
 		    cache: false, 	// 不缓存
-		    height: 300, 	// 设置高度，会启用固定表头的特性
+		    height: 535, 	// 设置高度，会启用固定表头的特性
 		    striped: true, 	// 隔行加亮
+		    //是否显示分页（*） 
+ 			pagination: true,
+ 			//分页方式：client客户端分页，server服务端分页（*）
+			sidePagination: "client",
+			//是否显示搜索
+			search: true,
 			columns: [{
 				field: 'large_Area',
 	    		title: "大区"
