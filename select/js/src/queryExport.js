@@ -127,7 +127,6 @@ $(function(){
 				hideModal();
 			}
 		});
-		
 	});
 	
 	$("#export").click(function(){
@@ -165,7 +164,7 @@ $(function(){
 	// 初始化table
 	$('#tb_departments').bootstrapTable({
 		dataType: "json",
-		showRefresh: true,//刷新按钮
+		showRefresh: false,//刷新按钮
         showToggle: true, // 切换视图
         showColumns: true,//列选择按钮
         buttonsAlign: "left",//按钮对齐方式
@@ -181,30 +180,48 @@ $(function(){
 		search: true,
 		columns: [{
 			field: 'large_Area',
+			align: 'center',
+    		valign: 'middle',
     		title: "大区"
 		},{
     		field: 'sch_Name',
+    		align: 'center',
+    		valign: 'middle',
     		title: "校区"
         },{
     		field: 'tea_Name',
+    		align: 'center',
+    		valign: 'middle',
     		title: "教师姓名"
         },{
     		field: 'role_Level',
+    		align: 'center',
+    		valign: 'middle',
     		title: "角色"
         },{
     		field: 'cus_Name',
+    		align: 'center',
+    		valign: 'middle',
     		title: "专业"
         },{
     		field: 'stu_Class',
+    		align: 'center',
+    		valign: 'middle',
     		title: "班级"
         },{
     		field: 'peopleCount',
+    		align: 'center',
+    		valign: 'middle',
     		title: "投票人数"
         },{
     		field: 'average',
+    		align: 'center',
+    		valign: 'middle',
     		title: "平均分"
         },{
     		field: 'fill_Date',
+    		align: 'center',
+    		valign: 'middle',
     		title: "月份"
         }],
         data: []

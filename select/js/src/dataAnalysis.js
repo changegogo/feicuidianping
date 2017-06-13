@@ -176,10 +176,11 @@ $(function(){
     		$('#searchBtn').attr('disabled', false);
     		return;
     	}
-    	
+    	var _url = "/SearchServer/brokenLineServlet?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&major="+GLOBAL.subject+"&role="+GLOBAL.role;
+    	_url = encodeURI(_url);
     	$.ajax({
     		type:"get",
-    		url:"/SearchServer/brokenLineServlet?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&major="+GLOBAL.subject+"&role="+GLOBAL.role,
+    		url: _url,
     		async:true,
     		success: function(data){
     			$('#searchBtn').attr('disabled', false);
@@ -204,7 +205,7 @@ $(function(){
 	    				if(teachers[i].scores[n]==-1){
 	    					teachers[i].scores[n] = "";
 	    				}else{
-	    					teachers[i].scores[n] = Number.parseFloat(teachers[i].scores[n].toFixed(2));
+	    					teachers[i].scores[n] = teachers[i].scores[n];
 	    				}
 	    			}
 	    			var item = {
@@ -246,9 +247,10 @@ $(function(){
 	    }
 	    // 姓名
 	    var name = params.seriesName;
-  		
+  		var _url = "/SearchServer/radarServlet?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&name="+name+"&major="+GLOBAL.subject+"&year=2017"+"&month="+mon+"&role="+GLOBAL.role;
+	    _url = encodeURI(_url);
 	    $.ajax({
-	    	url: "/SearchServer/radarServlet?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&name="+name+"&major="+GLOBAL.subject+"&year=2017"+"&month="+mon+"&role="+GLOBAL.role,
+	    	url: _url,
 	    	type: "get",
 	    	success: function(data){
 	    		if(data.code != 200){

@@ -83,9 +83,10 @@ $(function(){
         var roleLevel = $("#role").find('option:selected').html()=="请选择"?"":$("#role").find('option:selected').html();
         var startDate = $("#startDate").val()==""?"":$("#startDate").val();
         var endDate = $("#endDate").val()==""?"":$("#endDate").val();
-		
+		var _url = "/SearchServer/exceptionBeanServlet?largeName="+largeName+"&schoolName="+schoolName+"&majorName="+majorName+"&roleLevel="+roleLevel+"&startDate="+startDate+"&endDate="+endDate;
+		_url = encodeURI(_url);
 		$.ajax({
-			url: "/SearchServer/exceptionBeanServlet?largeName="+largeName+"&schoolName="+schoolName+"&majorName="+majorName+"&roleLevel="+roleLevel+"&startDate="+startDate+"&endDate="+endDate,
+			url: _url,
 			type: "get",
 			success: function(data){
 				if(data.code == 200){
@@ -103,7 +104,7 @@ $(function(){
     // 初始化table
 	$('#tb_departments').bootstrapTable({
 		dataType: "json",
-		showRefresh: true,//刷新按钮
+		showRefresh: false,//刷新按钮
         showToggle: true, // 切换视图
         showColumns: true,//列选择按钮
         buttonsAlign: "left",//按钮对齐方式
@@ -165,7 +166,10 @@ $(function(){
             width: 100,
             align: 'center',
             valign: 'middle',
-            title: "微信昵称"
+            title: "微信昵称",
+            formatter: function(value, row, index){
+            	return "<div style='width:100px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;' title="+value+">"+value+"</div>";
+            }
         },{
             field: 'average',
             width: 100,
@@ -174,10 +178,13 @@ $(function(){
             valign: 'middle'
         },{
             field: 'advice',
-            width: 100,
             title: '建议',
+            width: 100,
             align: 'center',
-            valign: 'middle'
+            valign: 'middle',
+            formatter: function(value, row, index){
+            	return "<div style='width:100px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;' title="+value+">"+value+"</div>";
+            }
         },{
             field: 'fillDate',
             width: 100,

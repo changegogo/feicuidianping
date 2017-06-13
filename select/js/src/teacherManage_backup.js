@@ -108,7 +108,7 @@ $(function(){
 					success : function(data) {
 						if(data.code==200){
 							alert("删除成功");
-							refreshTable();
+							$("#tb_departments").bootstrapTable('refresh');
 						}else{
 							alert(data.msg);
 						}
@@ -129,7 +129,7 @@ $(function(){
             $("#school").html(html);
         }else{
             var school = GLOBAL.selectData.schools[code];
-            //console.log(GLOBAL.selectData);
+            console.log(GLOBAL.selectData);
             var html='<option value="" text="请选择" selected>请选择</option>';
             for(var i=0;i<school.length;i++){
                 html += '<option value="'+ school[i].schID +'" text="'+ school[i].sch+""+'">'+  school[i].sch  +'</option>';
@@ -197,7 +197,7 @@ $(function(){
         if(GLOBAL.type == "编辑"){
         	_url = "/SearchServer/updateEditInfoServlet";
 	   		_data = {
-				id: $("#teacherId").html(),
+				id: Number.parseInt($("#teacherId").html()),
 				newSchoolName: $("#school").find('option:selected').html().trim(), 	//学校
 				newTeacherName: $('#name').val().trim(),  							//新姓名
 				newClassName: $('#banji').val().trim(),    							//新班级
@@ -221,7 +221,7 @@ $(function(){
 			success : function(data) {
 				if(data.code==200){
 					alert(data.msg);
-					refreshTable();
+					$("#tb_departments").bootstrapTable('refresh');
 					$('#myModal').modal('hide');
 				}else{
 					alert(data.msg);
@@ -232,7 +232,8 @@ $(function(){
 	        }
 	   });	
     }
-    // 新增按钮事件
+    /********************************编辑按钮的模态框------结束*************************************/
+    /**新增按钮**/
     $("#btnAdd").click(function(){
     	GLOBAL.type = "新增";
     	$('#myModal').modal('show');
@@ -265,26 +266,11 @@ $(function(){
     /**点击提交按钮上传数据**/
      $("#subm").click(function(){
      	updateAndAddSubm();	
-    }) 
-   
-    //加载等待图片
-	function hideModal(){
-		$('#loadingImg').modal('hide');
-	}
-	function showModal(){
-		$('#loadingImg').modal({backdrop:'static',keyboard:false});
-	}	
-    //加载数据过程中的ui样式
-    function actionFormatter(value) {
-         return [
-             '<button id="update"  class="btn btn-info btn-xs rightSize detailBtn" type="button"><i class="fa fa-paste"></i> 编辑</button>',
-             '<button id="remove" class="btn btn-danger btn-xs rightSize packageBtn" type="button"><i class="fa fa-envelope"></i> 删除</button>'
-         ].join('');
-	}
-    
-    // 通过ajax 获取当前查询条件最新的数据
-    function refreshTable(){
-		/*var blankbigArea = $("#bigArea").find("option:selected").text()=="请选择";
+    })
+    /********************************新增按钮-----结束*************************************************/
+    /********************************点击查询按钮----开始***************************************************/
+    $("#search").click(function(){
+    	/*var blankbigArea = $("#bigArea").find("option:selected").text()=="请选择";
     	var blankSchool = $("#schools").find("option:selected").text()=="请选择";
     	var blankProfession = $("#profession").find("option:selected").text()=="请选择";
     	if(blankbigArea){
@@ -297,108 +283,114 @@ $(function(){
     		alert("请选择专业!");
             return;
     	}*/
-    	var largeName=$("#bigArea").find('option:selected').html()=="请选择"?"":$("#bigArea").find('option:selected').html();
-		var schoolName=$("#schools").find('option:selected').html()=="请选择"?"":$("#schools").find('option:selected').html();
-		var majorName=$("#profession").find('option:selected').html()=="请选择"?"":$("#profession").find('option:selected').html();
-		var roleLevel=$("#jueSe").find('option:selected').html()=="请选择"?"":$("#jueSe").find('option:selected').html();
- 		var _url = "/SearchServer/editPageServlet?largeName="+largeName+"&schoolName="+schoolName+"&majorName="+majorName+"&roleLevel="+roleLevel+"&r="+Math.random();
-		_url = encodeURI(_url);
-		$.ajax({
-			url: _url,
-			type: "get",
-			beforeSend:function (){
-				showModal();
-			},
-			success: function(data){
-				if(data.code == 200){
-					if(data.results.length>0){
-						$('#tb_departments').bootstrapTable('load', data.results);
-					}else{
-						$('#tb_departments').bootstrapTable('load', []);
-					}
-				}else{
-					alert(data.msg);
-				}
-				hideModal();
-			},
-			error: function(err){
-				alert("网络错误");
-				$('#tb_departments').bootstrapTable('load', []);
-				hideModal();
-			}
-		});
+    	//点击查询按钮，出现等待图片，直到加载数据成功后，图片消失
+    	showModal();
+    	if($("#tb_departments").bootstrapTable('refresh')){
+    		hideModal();
+    	}
+    });
+   
+    //加载等待图片
+	function hideModal(){
+		$('#loadingImg').modal('hide');
 	}
-    
-    // 查询按钮
-	$("#searchBtn").click(refreshTable);
-    // 初始化table
-	$('#tb_departments').bootstrapTable({
-		dataType: "json",
-		showRefresh: false,//刷新按钮
-        showToggle: true, // 切换视图
-        showColumns: true,//列选择按钮
-        buttonsAlign: "left",//按钮对齐方式
-	    cache: false, 	// 不缓存
-	    height: 555, 	// 设置高度，会启用固定表头的特性
-	    striped: true, 	// 隔行加亮
-	    //是否显示分页（*） 
-		pagination: true,
-		pageList: [10, 25, 50, 100, 'All'],
-		//分页方式：client客户端分页，server服务端分页（*）
-		sidePagination: "client",
-		//是否显示搜索
-		search: true,
-		columns: [{
-    		field: 'id',
-    		width: 100,
-    		align: 'center',
-    		valign: 'middle',
-    		title: "id"
-        },{
-    		field: 'largeAreaName',
-    		width: 100,
-    		align: 'center',
-    		valign: 'middle',
-    		title: "大区"
-        }, {
-            field: 'schoolName',
-            width: 100,
-            title: '学校',
-            align: 'center',
-            valign: 'middle',
-        },{
-            field: 'majorName',
-            width: 100,
-            title: '专业',
-            align: 'center',
-            valign: 'middle',
-        },{
-            field: 'role',
-            width: 100,
-            title: '角色',
-            align: 'center',
-            valign: 'middle',
-        },{
-    		field: 'teacherName',
-    		width: 100,
-    		align: 'center',
-    		valign: 'middle',
-    		title: "姓名"
-        },{
-            field: 'className',
-            width: 100,
-            title: '班级名',
-            align: 'center',
-            valign: 'middle',
-        },{
-        	field: 'operate',
-        	width: 120,
-            title: '操作',
-            align: 'center',
-            valign: 'middle',
-            events: dictActionEvents,
-            formatter: actionFormatter
-        }],
-        data: []
-	});
+	function showModal(){
+		$('#loadingImg').modal({backdrop:'static',keyboard:false});
+	}	
+   
+  
+    //加载数据过程中的ui样式
+   
+    /********************************点击查询按钮----结束***************************************************/
+   
+   
+   
+    /*******************************初始化bootstraptable -----开始************************************/
+    function actionFormatter(value) {
+         return [
+             '<button id="update"  class="btn btn-info btn-sm rightSize detailBtn" type="button"><i class="fa fa-paste"></i> 编辑</button>',
+             '<button id="remove" class="btn btn-danger btn-sm rightSize packageBtn" type="button"><i class="fa fa-envelope"></i> 删除</button>'
+         ].join('');
+	}				
+	/**bootstraptable 点击查询按钮，加载数据并显示在table表格里**/
+    function initTable() {
+      $('#tb_departments').bootstrapTable({
+            url: "/SearchServer/editPageServlet",	//数据源
+            dataField: "results",					
+            sidePagination: "server",				//服务端分页
+            contentType: "application/json",		//请求数据内容格式 默认是 application/json
+            dataType: "json",						//期待返回数据类型
+            method: "get",							//请求方式
+            height: 535,
+            cache: false,
+            queryParamsType: "limit",				//查询参数组织方式
+            queryParams: function getParams(params) {
+            	params.largeName=$("#bigArea").find('option:selected').html()=="请选择"?"":$("#bigArea").find('option:selected').html();
+				params.schoolName=$("#schools").find('option:selected').html()=="请选择"?"":$("#schools").find('option:selected').html();
+				params.majorName=$("#profession").find('option:selected').html()=="请选择"?"":$("#profession").find('option:selected').html();
+				params.roleLevel=$("#jueSe").find('option:selected').html()=="请选择"?"":$("#jueSe").find('option:selected').html();
+                console.log(params);
+                return params;
+            },
+            
+            showRefresh: true,//刷新按钮
+            showToggle: true, // 切换视图
+            showColumns: true,//列选择按钮
+            buttonsAlign: "left",//按钮对齐方式
+            toolbar: "#toolbar",//指定工具栏
+            toolbarAlign: "right",//工具栏对齐方式
+            columns: [{
+        		field: 'id',
+        		width: 100,
+        		align: 'center',
+        		valign: 'middle',
+        		title: "id"
+            },{
+        		field: 'largeAreaName',
+        		width: 100,
+        		align: 'center',
+        		valign: 'middle',
+        		title: "大区"
+            }, {
+                field: 'schoolName',
+                width: 100,
+                title: '学校',
+                align: 'center',
+                valign: 'middle',
+            },{
+                field: 'majorName',
+                width: 100,
+                title: '专业',
+                align: 'center',
+                valign: 'middle',
+            },{
+                field: 'role',
+                width: 100,
+                title: '角色',
+                align: 'center',
+                valign: 'middle',
+            },{
+        		field: 'teacherName',
+        		width: 100,
+        		align: 'center',
+        		valign: 'middle',
+        		title: "姓名"
+            },{
+                field: 'className',
+                width: 100,
+                title: '班级名',
+                align: 'center',
+                valign: 'middle',
+            },{
+            	field: 'operate',
+            	width: 200,
+	            title: '操作',
+	            align: 'center',
+	            valign: 'middle',
+	            events: dictActionEvents,
+	            formatter: actionFormatter
+            }]
+        });
+    }
+    initTable();
 });
