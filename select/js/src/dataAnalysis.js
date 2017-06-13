@@ -1,7 +1,6 @@
 $(function(){
 	// 全局变量
 	var GLOBAL = GLOBAL || {};
-	
 	/**页面进来之后的三个下拉框大区+校区+专业，从数据库拿来数据复制给大区**/
     //预置字符串
     GLOBAL.selectTips= '<option value="" text="请选择">请选择</option>';
@@ -57,7 +56,10 @@ $(function(){
 	        text: '学校专业'
 	    },
 	    tooltip: {
-	        trigger: 'item'
+	        trigger: 'axis',
+	        axisPointer: {
+	            type: 'cross'
+	        }
 	    },
 	    legend: {
 	        data:[/*'张三','李思思'*/],
@@ -103,6 +105,9 @@ $(function(){
     GLOBAL.ldOption = {
 	    title: {
 	        text: 'XXX'
+	    },
+	    tooltip: {
+	    	
 	    },
 	    toolbox: {
 	        feature: {
@@ -176,7 +181,7 @@ $(function(){
     		$('#searchBtn').attr('disabled', false);
     		return;
     	}
-    	var _url = "/SearchServer/brokenLineServlet?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&major="+GLOBAL.subject+"&role="+GLOBAL.role;
+    	var _url = "/SearchServer/brokenLineServlet2?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&major="+GLOBAL.subject+"&role="+GLOBAL.role;
     	_url = encodeURI(_url);
     	$.ajax({
     		type:"get",
@@ -190,6 +195,7 @@ $(function(){
 	    		}
 	    		// 组装数据
 	    		var teachers = data.result.teachers;
+	    		GLOBAL.teachers = teachers;
 	    		if(teachers.length <= 0){
 	    			alert("还没有数据");
 	    			return;
@@ -238,46 +244,33 @@ $(function(){
     ];
     // 折线图点击事件,更新雷达图内容
     GLOBAL.zxChart.on('click', function (params) {
-    	console.log(params);
 	    // 月份
 	    var month = params.name;
 	    var mon  = month.replace(/月/,"");
-	    if(mon.length == 1){
-	    	mon = "0"+mon;
-	    }
 	    // 姓名
 	    var name = params.seriesName;
-  		var _url = "/SearchServer/radarServlet?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&name="+name+"&major="+GLOBAL.subject+"&year=2017"+"&month="+mon+"&role="+GLOBAL.role;
-	    _url = encodeURI(_url);
-	    $.ajax({
-	    	url: _url,
-	    	type: "get",
-	    	success: function(data){
-	    		if(data.code != 200){
-		    		return;
-		    	}
-		    	//雷达图的顶部信息
-		    	GLOBAL.ldOption.title.text = name+" "+month+"评分分布";
-		    	GLOBAL.ldOption.radar.indicator.splice(0,GLOBAL.ldOption.radar.indicator.length);
-		    	//if(GLOBAL.role==0){
-		    		for(var i=0; i<GLOBAL.titles[GLOBAL.role].length; i++){
-		    			var item = {
-		    				name: GLOBAL.titles[GLOBAL.role][i],
-		    				max: 5
-		    			};
-		    			GLOBAL.ldOption.radar.indicator[i] = item;
-		    		}
-		    	//}
-		    	GLOBAL.ldOption.series[0].data[0] = {
-		    		value: data.result.scores,
-		    		name: name
-		    	};
-		    	GLOBAL.ldChart.clear();
-		    	GLOBAL.ldChart.setOption(GLOBAL.ldOption);
-	    	},
-	    	error: function(){
-	    		alert("error");
-	    	}
-	    });
+	    // 折线图中的编号
+	    var seriesIndex = params.seriesIndex;
+	    var scores = GLOBAL.teachers[seriesIndex]["radar"][mon-1];
+	    if(scores && scores.length!=0){
+		    //雷达图的顶部信息
+	    	GLOBAL.ldOption.title.text = name+" "+month+"评分分布";
+	    	GLOBAL.ldOption.radar.indicator.splice(0,GLOBAL.ldOption.radar.indicator.length);
+			for(var i=0; i<GLOBAL.titles[GLOBAL.role].length; i++){
+				var item = {
+					name: GLOBAL.titles[GLOBAL.role][i],
+					max: 5
+				};
+				GLOBAL.ldOption.radar.indicator[i] = item;
+			}
+	    	GLOBAL.ldOption.series[0].data[0] = {
+	    		value: scores,
+	    		name: name
+	    	};
+	    	GLOBAL.ldChart.clear();
+	    	GLOBAL.ldChart.setOption(GLOBAL.ldOption);
+    	}else{
+    		alert("数据错误");
+    	}
 	});
 });
