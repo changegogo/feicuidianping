@@ -1,6 +1,6 @@
 $(function(){
     /**页面进来之后的三个下拉框大区+校区+专业，从数据库拿来数据复制给大区**/
-    var url = "/SearchServer/recentServlet";
+    var url = "../recentServlet";
     var GLOBAL = GLOBAL || {};
     //预置字符串
     GLOBAL.selectTips= '<option value="" text="请选择" selected>请选择</option>';
@@ -83,7 +83,7 @@ $(function(){
         var roleLevel = $("#role").find('option:selected').html()=="请选择"?"":$("#role").find('option:selected').html();
         var startDate = $("#startDate").val()==""?"":$("#startDate").val();
         var endDate = $("#endDate").val()==""?"":$("#endDate").val();
-		var _url = "/SearchServer/exceptionBeanServlet?largeName="+largeName+"&schoolName="+schoolName+"&majorName="+majorName+"&roleLevel="+roleLevel+"&startDate="+startDate+"&endDate="+endDate;
+		var _url = "../exceptionBeanServlet?largeName="+largeName+"&schoolName="+schoolName+"&majorName="+majorName+"&roleLevel="+roleLevel+"&startDate="+startDate+"&endDate="+endDate;
 		_url = encodeURI(_url);
 		$.ajax({
 			url: _url,

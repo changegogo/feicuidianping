@@ -4,7 +4,7 @@ $(function(){
     var GLOBAL = GLOBAL || {};
     //预置字符串
     GLOBAL.selectTips= '<option value="" text="请选择">请选择</option>';
-    var url = "/SearchServer/recentServlet";
+    var url = "../recentServlet";
     $.ajax({
 		url: url,
         type: "get",
@@ -101,7 +101,7 @@ $(function(){
          'click #remove': function (e, value, row) {
             if(confirm("确定要删除吗？")==true){
              	// 删除数据函数
-		   		var url = "/SearchServer/deleteEditPageServlet?id="+row.id;
+		   		var url = "../deleteEditPageServlet?id="+row.id;
 			    $.ajax({
 					url: url,
 		            type: "get",
@@ -195,7 +195,7 @@ $(function(){
         var _url = "";
         var _data = {};
         if(GLOBAL.type == "编辑"){
-        	_url = "/SearchServer/updateEditInfoServlet";
+        	_url = "../updateEditInfoServlet";
 	   		_data = {
 				id: $("#teacherId").html(),
 				newSchoolName: $("#school").find('option:selected').html().trim(), 	//学校
@@ -205,7 +205,7 @@ $(function(){
 				newMajorName: $('#prof').find('option:selected').html().trim(), 	//新专业
 			};
         }else{
-        	_url = "/SearchServer/editPageInsertServlet";
+        	_url = "../editPageInsertServlet";
         	_data = {
             	schoolName: $('#school').find('option:selected').text(),
 				role: $('#leixing').find('option:selected').text(),
@@ -301,7 +301,7 @@ $(function(){
 		var schoolName=$("#schools").find('option:selected').html()=="请选择"?"":$("#schools").find('option:selected').html();
 		var majorName=$("#profession").find('option:selected').html()=="请选择"?"":$("#profession").find('option:selected').html();
 		var roleLevel=$("#jueSe").find('option:selected').html()=="请选择"?"":$("#jueSe").find('option:selected').html();
- 		var _url = "/SearchServer/editPageServlet?largeName="+largeName+"&schoolName="+schoolName+"&majorName="+majorName+"&roleLevel="+roleLevel+"&r="+Math.random();
+ 		var _url = "../editPageServlet?largeName="+largeName+"&schoolName="+schoolName+"&majorName="+majorName+"&roleLevel="+roleLevel+"&r="+Math.random();
 		_url = encodeURI(_url);
 		$.ajax({
 			url: _url,
@@ -334,6 +334,7 @@ $(function(){
     // 初始化table
 	$('#tb_departments').bootstrapTable({
 		dataType: "json",
+		toolbar: "#btnAdd",
 		showRefresh: false,//刷新按钮
         showToggle: false, // 切换视图
         showColumns: false,//列选择按钮

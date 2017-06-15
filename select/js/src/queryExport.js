@@ -10,7 +10,7 @@ $(function(){
     var GLOBAL = GLOBAL || {};
 	//预置字符串
     GLOBAL.selectTips= '<option value="" text="请选择">请选择</option>';
-    var url = "/SearchServer/recentServlet";
+    var url = "../recentServlet";
     $.ajax({
 		url: url,
         type: "get",
@@ -99,7 +99,7 @@ $(function(){
         };
  
 		$.ajax({
-			url: "/SearchServer/selectServlet",
+			url: "../selectServlet",
 			type: "post",
 			data: {
 				name: JSON.stringify(conditionData)
@@ -138,7 +138,7 @@ $(function(){
 			startDate : $("#startDate").val()==""?"":$("#startDate").val(),
 			endDate : $("#endDate").val()==""?"":$("#endDate").val()
         };
-        var url = "/SearchServer/ExportssServlet";
+        var url = "../ExportssServlet";
 		$.ajax({
 			async : false,
 			method : "get",

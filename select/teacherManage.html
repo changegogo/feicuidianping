@@ -54,13 +54,11 @@
                 <div class="portlet box grey">
 				    <div class="portlet-title">
 					    <div class="caption"><i class="icon-user"></i>老师管理</div>
-		                <div class="actions">
+		                <!--<div class="actions">
 						    <a href="#" id="btnAdd" class="btn btn-success">
-						    	<i class="icon-add"></i> 
-						    	新增老师
+						    	<i class="icon-add"></i>新增老师
 						    </a>
-		                   <!-- <a href="#" id="btnDelete" class="btn btn-success"><i class="icon-remove"></i> 删除已选</a>-->
-		                </div>
+		                </div>-->
 				    </div>
 				    <div class="panel panel-default" style="margin-bottom:10px;">
 						<div class="panel-heading">查询条件</div>
@@ -103,7 +101,12 @@
 								</div>
 							</form>
 						</div>
-					</div>    
+					</div>
+					<div id="btnAdd" style="margin-right: 5px; margin-top: -1px;">
+					    <button href="#" class="btn btn-default">
+					    	<span class="glyphicon glyphicon-plus"></span>
+					    </button>
+		            </div>
 					<div class="tableStyle">
 					    <table id="tb_departments">
 						</table>

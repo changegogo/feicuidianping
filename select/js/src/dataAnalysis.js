@@ -4,7 +4,7 @@ $(function(){
 	/**页面进来之后的三个下拉框大区+校区+专业，从数据库拿来数据复制给大区**/
     //预置字符串
     GLOBAL.selectTips= '<option value="" text="请选择">请选择</option>';
-    var url = "/SearchServer/recentServlet";
+    var url = "../recentServlet";
     $.ajax({
 		url: url,
         type: "get",
@@ -178,7 +178,7 @@ $(function(){
     		$('#searchBtn').attr('disabled', false);
     		return;
     	}
-    	var _url = "/SearchServer/brokenLineServlet2?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&major="+GLOBAL.subject+"&role="+GLOBAL.role+"&year="+GLOBAL.year;
+    	var _url = "../brokenLineServlet2?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&major="+GLOBAL.subject+"&role="+GLOBAL.role+"&year="+GLOBAL.year;
     	_url = encodeURI(_url);
     	$.ajax({
     		type:"get",
