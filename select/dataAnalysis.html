@@ -5,19 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>教师评价系统后台操作页面</title>
     
-    <link rel="stylesheet" href="assets/css/basic.css" />
+    <link rel="stylesheet" href="css/basic.css" />
     <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <!--<link rel="stylesheet" href="css/style-metro.css"/>-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-table.min.css" />
-  <!--  <link rel="stylesheet" href="css/style-metro.css"/>-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
     <style type="text/css">
-    	.chartstyle {
+    	/*.chartstyle {
+    		width: 40%;
+    		height: 300px;
+    		float: left;
+    		margin-left: 5%;
+    		margin-right: 5%;
+    	}*/
+    	.zxchartstyle {
     		width: 50%;
     		height: 400px;
     		float: left;
     	}
     	.ldchartstyle {
+    		width: 50%;
+    		height: 400px;
+    		float: left;
     		border-left: 1px dashed gray;
     	}
     </style>
@@ -32,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">翡翠教育</a>
+                <a class="navbar-brand" href="#">翡翠教育</a>
             </div>
         </nav>
         <!-- 导航 -->
@@ -45,10 +55,10 @@
                     </li>
                     <!--编辑菜单栏按钮-->
                     <li>
-                        <a href="teacherManage.html"><i class="fa fa-edit "></i>老师管理</a>
-                    </li>
-                    <li>
                         <a  href="abnormal.html"><i class="fa fa-anchor"></i>异常数据</a>
+                    </li>
+                     <li>
+                        <a href="teacherManage.html"><i class="fa fa-edit "></i>老师管理</a>
                     </li>
                     <li>
                         <a class="active-menu" href=" dataAnalysis.html"><i class="fa fa-bar-chart-o"></i>数据分析</a>
@@ -58,7 +68,7 @@
 
         </nav>
         <!-- 主页面  -->
-        <div id="page-wrapper" style="min-height:700px;">
+        <div id="page-wrapper" style="min-height:660px;">
             <div id="page-inner">
             	<!--主页面头部-->
               	<div class="portlet box grey">
@@ -92,8 +102,7 @@
 									<label class="control-label col-sm-1" for="txt_search_statu">角色</label>
 									<div class="col-sm-2">
 										 <select class="form-control "  id="role">
-									      <option value text="请选择">请选择</option>
-									      <option value='0' text="讲师">讲师</option>
+									      <option value='0' text="讲师" selected>讲师</option>
 									      <option value='1' text="班主任">班主任</option>
 									      <option value='2' text="就业">就业</option>
 									      <option value='3' text="在线老师">在线老师</option>
@@ -105,12 +114,15 @@
 									<label class="control-label col-sm-1"
 										for="txt_search_departmentname">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份</label>
 									<div class="col-sm-2">
-										<select class="form-control" id="bigArea">
-									    	<option value text="请选择">请选择</option>
-									    	<option value text="2017">2017</option>
+										<select class="form-control" id="year">
+									    	<option value text="2017" selected>2017</option>
 									    	<option value text="2018">2018</option>
 									    	<option value text="2019">2019</option>
 									    	<option value text="2020">2020</option>
+									    	<option value text="2021">2021</option>
+									    	<option value text="2022">2022</option>
+									    	<option value text="2023">2023</option>
+									    	<option value text="2024">2024</option>
 										</select> 
 									</div>
 									<!--查询按钮-->
@@ -120,16 +132,15 @@
 								</div>
 							</form>
 						</div>
-					</div>    
-					<div >
-					   <div class="chartstyle" id="zxChart"></div>
+					</div>  
+					<div class="tableStyle" style="height: 450px; padding-top: 10px;">
+					   <div class="chartstyle zxchartstyle" id="zxChart"></div>
 					   <div class="chartstyle ldchartstyle" id="ldChart"></div>
 				    </div>
 			    </div>	
 			</div>
         </div>
     </div>
-
 	<!--尾部-->
     <div id="footer-sec" style="margin-top:-10px;">
 		<div class="footer">
@@ -142,11 +153,11 @@
 		</div>
     </div>
     <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-table.min.js"></script>
-    <script src="js/bootstrap-table-zh-CN.js"></script> 
+    <script src="js/bootstrap-table-zh-CN.min.js"></script> 
     <script src="js/WdatePicker.js"></script>
-    <script src="js/echarts.js"></script>
+    <script src="js/echarts.min.js"></script>
     <script src="js/src/dataAnalysis.js"></script>
 </body>
 </html>

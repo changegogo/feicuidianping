@@ -104,10 +104,6 @@ $(function(){
     // 初始化table
 	$('#tb_departments').bootstrapTable({
 		dataType: "json",
-		showRefresh: false,//刷新按钮
-        showToggle: true, // 切换视图
-        showColumns: true,//列选择按钮
-        buttonsAlign: "left",//按钮对齐方式
 	    cache: false, 	// 不缓存
 	    height: 535, 	// 设置高度，会启用固定表头的特性
 	    striped: true, 	// 隔行加亮
@@ -118,13 +114,18 @@ $(function(){
 		sidePagination: "client",
 		//是否显示搜索
 		search: true,
+		searchAlign: "left",
 		// 导出excel
 		showExport: true,
-		exportDataType: "basic",
+		exportDataType: "all",
 		exportTypes: ['excel'],
 		exportOptions: {
 	        fileName: '评分异常数据'
 	    },
+	    showRefresh: false,//刷新按钮
+        showToggle: false, // 切换视图
+        showColumns: false,//列选择按钮
+        buttonsAlign: "left",//按钮对齐方式
 		columns: [{
             field: 'largeAreaName',
             width: 100,

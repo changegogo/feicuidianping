@@ -277,14 +277,14 @@ $(function(){
     //加载数据过程中的ui样式
     function actionFormatter(value) {
          return [
-             '<button id="update"  class="btn btn-info btn-xs rightSize detailBtn" type="button"><i class="fa fa-paste"></i> 编辑</button>',
-             '<button id="remove" class="btn btn-danger btn-xs rightSize packageBtn" type="button"><i class="fa fa-envelope"></i> 删除</button>'
+             '<button id="update"  class="btn btn-success btn-xs rightSize detailBtn" type="button"><i class="fa fa-edit"></i> 编辑</button>',
+             '<button id="remove" class="btn btn-danger btn-xs rightSize packageBtn" style="margin-left: 2px;" type="button"><i class="glyphicon glyphicon-remove"></i> 删除</button>'
          ].join('');
 	}
     
     // 通过ajax 获取当前查询条件最新的数据
     function refreshTable(){
-		/*var blankbigArea = $("#bigArea").find("option:selected").text()=="请选择";
+		var blankbigArea = $("#bigArea").find("option:selected").text()=="请选择";
     	var blankSchool = $("#schools").find("option:selected").text()=="请选择";
     	var blankProfession = $("#profession").find("option:selected").text()=="请选择";
     	if(blankbigArea){
@@ -293,7 +293,7 @@ $(function(){
     	}else if (blankSchool){
     		alert("请选择学校!");
             return;
-    	}else if (blankProfession){
+    	}/*else if (blankProfession){
     		alert("请选择专业!");
             return;
     	}*/
@@ -335,8 +335,8 @@ $(function(){
 	$('#tb_departments').bootstrapTable({
 		dataType: "json",
 		showRefresh: false,//刷新按钮
-        showToggle: true, // 切换视图
-        showColumns: true,//列选择按钮
+        showToggle: false, // 切换视图
+        showColumns: false,//列选择按钮
         buttonsAlign: "left",//按钮对齐方式
 	    cache: false, 	// 不缓存
 	    height: 555, 	// 设置高度，会启用固定表头的特性
@@ -348,6 +348,7 @@ $(function(){
 		sidePagination: "client",
 		//是否显示搜索
 		search: true,
+		searchAlign: "left",
 		columns: [{
     		field: 'id',
     		width: 100,
@@ -392,7 +393,7 @@ $(function(){
             valign: 'middle',
         },{
         	field: 'operate',
-        	width: 120,
+        	width: 100,
             title: '操作',
             align: 'center',
             valign: 'middle',

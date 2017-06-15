@@ -110,9 +110,9 @@ $(function(){
 			success: function(data){
 				if(data.code == 200){
 					if(data.selectInfo.length>0){
-						$("#export").show();
+						//$("#export").show();
 					}else{
-						$("#export").hide();
+						//$("#export").hide();
 					}
 					$('#tb_departments').bootstrapTable('load', data.selectInfo);
 					hideModal();
@@ -129,7 +129,7 @@ $(function(){
 		});
 	});
 	
-	$("#export").click(function(){
+	$("#exportli").click(function(){
 		var conditionData = {
 			largeArea : $("#bigArea").find('option:selected').html(),
 			schName : $("#schools").find('option:selected').html(),
@@ -148,12 +148,14 @@ $(function(){
 			},
 			url : url,
 			success : function(data) {
-				alert(data);
-				if (data == "当前导出无结果！") {
-					return;
-				} else {
-					//location.href = "/SearchServer/xlsx/" + data;
-					location.href = 'http://tp.feicuiedu.com:8081/WebRoot/xlsx/' + data;
+				// alert(data);
+				if(confirm("确定导出表格")){
+					if (data == "当前导出无结果！") {
+						return;
+					} else {
+						//location.href = "/SearchServer/xlsx/" + data;
+						location.href = 'http://tp.feicuiedu.com:8081/WebRoot/xlsx/' + data;
+					}
 				}
 			},
 			error : function(err) {
@@ -165,9 +167,11 @@ $(function(){
 	$('#tb_departments').bootstrapTable({
 		dataType: "json",
 		showRefresh: false,//刷新按钮
-        showToggle: true, // 切换视图
-        showColumns: true,//列选择按钮
+        showToggle: false, // 切换视图
+        showColumns: false,//列选择按钮
         buttonsAlign: "left",//按钮对齐方式
+        toolbar: "#toolbar",
+        toolbarAlign: "left",
 	    cache: false, 	// 不缓存
 	    height: 535, 	// 设置高度，会启用固定表头的特性
 	    striped: true, 	// 隔行加亮
@@ -178,6 +182,7 @@ $(function(){
 		sidePagination: "client",
 		//是否显示搜索
 		search: true,
+		searchAlign: "left",
 		columns: [{
 			field: 'large_Area',
 			align: 'center',

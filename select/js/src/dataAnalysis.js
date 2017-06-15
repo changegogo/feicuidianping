@@ -56,10 +56,7 @@ $(function(){
 	        text: '学校专业'
 	    },
 	    tooltip: {
-	        trigger: 'axis',
-	        axisPointer: {
-	            type: 'cross'
-	        }
+	        
 	    },
 	    legend: {
 	        data:[/*'张三','李思思'*/],
@@ -73,7 +70,7 @@ $(function(){
 	    },
 	    toolbox: {
 	        feature: {
-	            saveAsImage: {}
+	            //saveAsImage: {}
 	        }
 	    },
 	    xAxis: {
@@ -104,14 +101,14 @@ $(function(){
     // 雷达图初始化
     GLOBAL.ldOption = {
 	    title: {
-	        text: 'XXX'
+	        text: '姓名班级'
 	    },
 	    tooltip: {
 	    	
 	    },
 	    toolbox: {
 	        feature: {
-	            saveAsImage: {}
+	            //saveAsImage: {}
 	        }
 	    },
 	    legend: {
@@ -154,7 +151,7 @@ $(function(){
     	GLOBAL.school = $("#schools").find('option:selected').html();
     	GLOBAL.subject = $("#profession").find('option:selected').html();
     	GLOBAL.role = $("#role").val();
-    	GLOBAL.year = "2017";
+    	GLOBAL.year = $("#year").find('option:selected').html();
     	// 非空校验
     	if(GLOBAL.bigArea=="请选择"){
     		alert("请选择大区");
@@ -181,7 +178,7 @@ $(function(){
     		$('#searchBtn').attr('disabled', false);
     		return;
     	}
-    	var _url = "/SearchServer/brokenLineServlet2?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&major="+GLOBAL.subject+"&role="+GLOBAL.role;
+    	var _url = "/SearchServer/brokenLineServlet2?largeArea="+GLOBAL.bigArea+"&school="+GLOBAL.school+"&major="+GLOBAL.subject+"&role="+GLOBAL.role+"&year="+GLOBAL.year;
     	_url = encodeURI(_url);
     	$.ajax({
     		type:"get",
@@ -205,7 +202,7 @@ $(function(){
 	    		GLOBAL.zxOption.legend.data.splice(0,GLOBAL.zxOption.legend.data.length);
 	    		GLOBAL.zxOption.series.splice(0,GLOBAL.zxOption.series.length);
 	    		for(var i=0;i<teachers.length;i++){
-	    			GLOBAL.zxOption.legend.data[i] = teachers[i].name;
+	    			GLOBAL.zxOption.legend.data[i] = teachers[i].name+teachers[i].stuclass;
 	    			// 将后台数据中的-1改为""
 	    			for(var n=0;n<teachers[i].scores.length;n++){
 	    				if(teachers[i].scores[n]==-1){
@@ -215,7 +212,7 @@ $(function(){
 	    				}
 	    			}
 	    			var item = {
-	    				name: teachers[i].name,
+	    				name: teachers[i].name+teachers[i].stuclass,
 	    				type: "line",
 	    				data: teachers[i].scores
 	    			};
@@ -265,7 +262,7 @@ $(function(){
 			}
 	    	GLOBAL.ldOption.series[0].data[0] = {
 	    		value: scores,
-	    		name: name
+	    		name: GLOBAL.ldOption.title.text
 	    	};
 	    	GLOBAL.ldChart.clear();
 	    	GLOBAL.ldChart.setOption(GLOBAL.ldOption);

@@ -7,17 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <title>教师评价系统后台操作页面</title>
     
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <link href="assets/css/basic.css" rel="stylesheet" />
-    <link href="assets/css/custom.css" rel="stylesheet" />
-	<!--<link href="css/select.css" rel="stylesheet"/>-->
+    <link href="css/basic.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet"/>
-    <link href="assets/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="css/bootstrap-table.min.css" rel="stylesheet"  />
+	<!--<link href="css/style-metro.css"  rel="stylesheet"/>-->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap-table.min.css" rel="stylesheet"/>
+    <link href="css/font-awesome.css" rel="stylesheet" />
 </head>
 <body>
     <div id="wrapper">
-        <nav class="navbar  navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <nav class="navbar  navbar-cls-top" role="navigation"  style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -25,10 +24,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">翡翠教育</a>
+                <a class="navbar-brand" href="#">翡翠教育</a>
             </div>
-
-           <!-- <div class="header-right">
+            <!--<div class="header-right">
                 <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
                 <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
                 <a href="login.html" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
@@ -42,35 +40,26 @@
                     <li>
                         <a class="active-menu" href="queryExport.html"><i class="fa fa-dashboard "></i>查询导出</a>
                     </li>
-                    <!--编辑菜单栏按钮-->
-                    <li>
-                        <a href="teacherManage.html"><i class="fa fa-edit "></i>老师管理</a>
-                    </li>
                     <li>
                         <a href="abnormal.html"><i class="fa fa-anchor "></i>异常数据</a>
                     </li>
                     <li>
-                        <a href="dataAnalysis.html"><i class="fa fa-bar-chart-o "></i>数据分析</a>
+                        <a href="teacherManage.html"><i class="fa fa-edit "></i>老师管理</a>
+                    </li>
+                    <li>
+                        <a href="dataAnalysis.html"><i class="fa fa-bar-chart-o"></i>数据分析</a>
                     </li>
                   </ul>     
              </div>
 
         </nav>
         <!-- 主页面  -->
-               <!-- 主页面  -->
         <div id="page-wrapper">
             <div id="page-inner">
             	<!--主页面头部-->
                 <div class="portlet box grey">
 				    <div class="portlet-title">
 					    <div class="caption"><i class="icon-user"></i>查询导出</div>
-		                <div class="actions" style="display: none;">
-						    <a href="#" id="btnAdd" class="btn btn-success">
-						    	<i class="icon-add"></i> 
-						    	新增
-						    </a>
-		                   <!-- <a href="#" id="btnDelete" class="btn btn-success"><i class="icon-remove"></i> 删除已选</a>-->
-		                </div>
 				    </div>
 				    <div class="panel panel-default" style="margin-bottom:10px;">
 						<div class="panel-heading">查询条件</div>
@@ -128,7 +117,16 @@
 							</form>
 						</div>
 					</div>    
-					<div class="portlet-body">
+					<div id="toolbar" style="margin-right: 5px; margin-top: -1px;">
+						<button id="btn_add" type="button" class="btn btn-default" data-toggle="dropdown">
+			                <span class="glyphicon glyphicon-export icon-share" aria-hidden="true"></span>
+			                <span class="caret" aria-hidden="true"></span>
+			            </button>
+			            <ul class="dropdown-menu">
+			            	<li id="exportli"><a>MS-Excel</a></li>
+			            </ul>
+					</div>
+					<div class="tableStyle">
 					    <table id="tb_departments">
 						</table>
 				    </div>
@@ -138,7 +136,7 @@
     </div>
     <!--加载等待-->	 
 	<div  class="modal fade" id="myModal" style="position:absolute;left:50%;top:40%;">
-		<img src="assets/img/prettyPhoto/dark_rounded/loader.gif" alt="等待图标" />
+		<img src="images/loader.gif" alt="等待图标" />
 	</div>
 	<!--尾部-->
     <div id="footer-sec">
@@ -152,18 +150,11 @@
 			</div>
 		</div>
    </div>
-    <script src="assets/js/jquery-1.10.2.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-table.min.js"></script>
-    <script src="js/bootstrap-table-zh-CN.js"></script>
+    <script src="js/bootstrap-table-zh-CN.min.js"></script>
     <script src="js/WdatePicker.js"></script>
     <script src="js/src/queryExport.js"></script>
-    
-	<!--<script type="text/javascript" src="js/AjaxRequest.js"></script>-->
-	<!--<script type="text/javascript" src="js/zepto.min.js"></script>-->
-    <!--<script type="text/javascript" src="assets/js/wizard/jquery.steps.js"></script>
-    <script src="assets/js/jquery.metisMenu.js"></script>
-    <script src="assets/js/custom.js"></script>-->
-	
 </body>
 </html>
