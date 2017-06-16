@@ -124,6 +124,9 @@ $(function() {
 		case "讲师":
 			path = "json/projectManager.json";
 			break;
+		case "就业":
+			path = "json/employmentManager.json";
+			break;
 		case "班主任":
 			path = "json/headmaster.json";
 			break;
@@ -158,7 +161,11 @@ $(function() {
 					// 专业
 					confSubjectText(data.results.subject);
 					// 历史数据
-					updateClassAndTeaName(data.results.history);
+					//updateClassAndTeaName(data.results.history);
+					updateClassAndTeaName({
+						classList: [],
+						teacherName: []
+					});
 				}else{
 					showbox('没有数据');
 				}
@@ -326,11 +333,13 @@ $(function() {
 				temp.role_Level = 0;
 			} else if (typeValue == "班主任") {
 				temp.role_Level = 1;
-			}else if(typeValue == "在线老师"){
+			}else if(typeValue == "就业"){
 				temp.role_Level = 2;
+			}else if(typeValue == "在线老师"){
+				temp.role_Level = 3;
 			}
 			// 提交数据获取班级和老师姓名数据
-			console.log('类型-->'+typeValue+',学校名称-->'+temp.sch_Name+',专业-->'+temp.cus_Name);
+			//console.log('类型-->'+typeValue+',学校名称-->'+temp.sch_Name+',专业-->'+temp.cus_Name);
 			showRotatebox();
 			
 			//TODO 获取班级和老师名称信息 schoolName majorName, role_Level
@@ -343,6 +352,11 @@ $(function() {
 				success : function(data) {
 					if(data.code==200){
 						GLOBAL.selectData = data.results;
+						if(GLOBAL.selectData.length<=1){
+							showbox("没有可评价老师，请重新选择");
+							hideRotatebox();
+							return;
+						}
 			            var ctStr = GLOBAL.selectTips;
 			            for (var i = 0; i < GLOBAL.selectData.length; i++) {
 			                if (GLOBAL.selectData[i].fatherid == 0) {
@@ -689,7 +703,6 @@ $(function() {
 			},
 			success : function(data) {
 				hideRotatebox();
-				data = Number.parseInt(data);
 				if (data.code == 200) {
 					if (isAnimating) return;
 					last.row = now.row;
@@ -698,9 +711,9 @@ $(function() {
 						now.row = last.row + 1;
 						now.col = 1; pageMove(towards.up);
 					}
-					showbox("点评成功！");
+					showbox(data.msg);
 				} else {
-					showbox("点评失败！");
+					showbox(data.msg);
 				}
 			},
 			error : function(err) {

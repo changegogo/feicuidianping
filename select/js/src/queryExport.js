@@ -130,38 +130,39 @@ $(function(){
 	});
 	
 	$("#exportli").click(function(){
-		var conditionData = {
-			largeArea : $("#bigArea").find('option:selected').html(),
-			schName : $("#schools").find('option:selected').html(),
-			cusName : $("#profession").find('option:selected').html(),
-			role : $("#role").find('option:selected').html(),
-			startDate : $("#startDate").val()==""?"":$("#startDate").val(),
-			endDate : $("#endDate").val()==""?"":$("#endDate").val()
-        };
-        var url = "../ExportssServlet";
-		$.ajax({
-			async : false,
-			method : "get",
-			traditional : false,
-			data : {
-				name : JSON.stringify(conditionData)
-			},
-			url : url,
-			success : function(data) {
-				// alert(data);
-				if(confirm("确定导出表格")){
+		if(confirm("确定导出表格")){
+			var conditionData = {
+				largeArea : $("#bigArea").find('option:selected').html(),
+				schName : $("#schools").find('option:selected').html(),
+				cusName : $("#profession").find('option:selected').html(),
+				role : $("#role").find('option:selected').html(),
+				startDate : $("#startDate").val()==""?"":$("#startDate").val(),
+				endDate : $("#endDate").val()==""?"":$("#endDate").val()
+	        };
+	        var url = "../ExportssServlet";
+			$.ajax({
+				async : false,
+				method : "get",
+				traditional : false,
+				data : {
+					name : JSON.stringify(conditionData)
+				},
+				url : url,
+				success : function(data) {
+					// alert(data);
 					if (data == "当前导出无结果！") {
+						alert(data);
 						return;
 					} else {
 						//location.href = "/SearchServer/xlsx/" + data;
-						location.href = 'http://tp.feicuiedu.com:8081/WebRoot/xlsx/' + data;
+						location.href = 'http://tp.feicuiedu.com:8081/WebRoot1/xlsx/' + data;
 					}
+				},
+				error : function(err) {
+					alert('error');
 				}
-			},
-			error : function(err) {
-				alert('error');
-			}
-		});
+			});
+		}
 	})
 	// 初始化table
 	$('#tb_departments').bootstrapTable({

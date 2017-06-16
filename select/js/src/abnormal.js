@@ -122,6 +122,9 @@ $(function(){
 		exportOptions: {
 	        fileName: '评分异常数据'
 	    },
+	    icons:{
+	    	export: "glyphicon-export icon-share"
+	    },
 	    showRefresh: false,//刷新按钮
         showToggle: false, // 切换视图
         showColumns: false,//列选择按钮

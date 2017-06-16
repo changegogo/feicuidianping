@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,8 +13,8 @@
 <link rel="stylesheet" type="text/css" href="css/animations.css">
 
 <script>"undefined"==typeof CODE_LIVE&&(!function(e){var t={nonSecure:"8123",secure:"8124"},c={nonSecure:"http://",secure:"https://"},r={nonSecure:"127.0.0.1",secure:"gapdebug.local.genuitec.com"},n="https:"===window.location.protocol?"secure":"nonSecure";script=e.createElement("script"),script.type="text/javascript",script.async=!0,script.src=c[n]+r[n]+":"+t[n]+"/codelive-assets/bundle.js",e.getElementsByTagName("head")[0].appendChild(script)}(document),CODE_LIVE=!0);</script></head>
-<body data-genuitec-lp-enabled="false" data-genuitec-file-id="wc1-8" data-genuitec-path="/SearchServer/WebRoot/index.html">
-	<div class="box" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc1-8" data-genuitec-path="/SearchServer/WebRoot/index.html">
+<body data-genuitec-lp-enabled="false" data-genuitec-file-id="wc1-19" data-genuitec-path="/SearchServer/WebRoot/index.jsp">
+	<div class="box" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc1-19" data-genuitec-path="/SearchServer/WebRoot/index.jsp">
 		<div class="cont pt-page-moveCircle">
 			<p class="info">谢谢</p>
 			<div class="yes">
@@ -28,7 +29,11 @@
 			<p>正在提交数据.....</p>
 		</div>
 	</div>
-	
+	<%
+		HttpSession s = request.getSession();
+		String unionid = (String) s.getAttribute("unionid");
+		if (!(unionid == null || "".equals(unionid))) {
+	%>
 	<div class="page page-1-1 page-current">
 		<div class="wrap headingContainer">
 			<img id="headerImg" src="images/headerImg.png" alt="满意度调查" />
@@ -39,14 +44,13 @@
 		<div class="kuang">
 			<!--×号-->
 			<div>
-				<img class="modal-close-btn"
-					src="images/clear.png" alt="" />
+				<img class="modal-close-btn" src="images/clear.png" alt="" />
 				<ul id="schools"></ul>
 				<div id="confirm">确定</div>
 			</div>
 		</div>
 		<div class="wrap flex-container">
-			<h2 class="page-title">请选择您所在的区域123：</h2>
+			<h2 class="page-title">请选择您所在的区域：</h2>
 			<div class="bigContainer">
 
 				<div>
@@ -78,14 +82,17 @@
 			<div class="flex-item profession pt-page-rotateUnfoldLeft"></div>
 			<div class="flex-item left profession pt-page-rotateUnfoldLeft"></div>
 			<div class="flex-item profession pt-page-rotateUnfoldLeft"></div>
-			
-			
+
+
 			<div class="typechoise">
 				<h2 class="page-title2">请选择老师类型：</h2>
-				<label for="teacher"><input id="teacher" type="radio" name="tachertype" value="讲师" checked="true"/>讲师&nbsp;</label> 
-				<label for="master"><input id="master" type="radio" name="tachertype" value="班主任"/>班主任&nbsp;</label>
-				<label for="employment"><input id="employment" type="radio" name="tachertype" value="就业"/>就业</label><br/><br/>
-				<label for="online"><input id="online" type="radio" name="tachertype" value="在线老师"/>在线老师</label>
+				<label for="teacher"><input id="teacher" type="radio"
+					name="tachertype" value="讲师" checked="true" />讲师&nbsp;</label> <label
+					for="master"><input id="master" type="radio"
+					name="tachertype" value="班主任" />班主任&nbsp;</label> <label for="employment"><input
+					id="employment" type="radio" name="tachertype" value="就业" />就业</label><br />
+				<br /> <label for="online" style="display: none;"><input id="online" type="radio"
+					name="tachertype" value="在线老师" />在线老师</label>
 			</div>
 			<div class="professionBtn">确定</div>
 		</div>
@@ -183,9 +190,15 @@
 		<div class="returnFirstPage">返回首页</div>
 	</div>
 	<script src="js/jquery-1.8.3.min.js"></script>
-	<script>$.noConflict();</script>
+	<script>$.noConflict();
+	</script>
 	<script src="js/zepto.min.js"></script>
 	<script src="js/touch.js"></script>
 	<script src="js/index.js" type="text/javascript" charset="UTF-8"></script>
+	<%
+		} else {
+			response.sendRedirect("LoginServlet");
+		}
+	%>
 </body>
 </html>

@@ -95,8 +95,7 @@ $(function(){
 	            //姓名
 	            $("#name").val(row.teacherName);
 	            /**同时，大区和校区有下拉框的数据**/
-	            $("#myModalLabel").text("编辑老师");
-         	    
+	            $("#myModalLabel").text("编辑老师"); 
          },
          'click #remove': function (e, value, row) {
             if(confirm("确定要删除吗？")==true){
@@ -108,7 +107,11 @@ $(function(){
 					success : function(data) {
 						if(data.code==200){
 							alert("删除成功");
-							refreshTable();
+							var blankbigArea = $("#bigArea").find("option:selected").text()!="请选择";
+    						var blankSchool = $("#schools").find("option:selected").text()!="请选择";
+    						if(blankbigArea && blankSchool){
+    							refreshTable();
+    						}
 						}else{
 							alert(data.msg);
 						}
@@ -197,21 +200,21 @@ $(function(){
         if(GLOBAL.type == "编辑"){
         	_url = "../updateEditInfoServlet";
 	   		_data = {
-				id: $("#teacherId").html(),
-				newSchoolName: $("#school").find('option:selected').html().trim(), 	//学校
-				newTeacherName: $('#name').val().trim(),  							//新姓名
-				newClassName: $('#banji').val().trim(),    							//新班级
-				newRole: $('#leixing').find('option:selected').html().trim(), 		//新类型
-				newMajorName: $('#prof').find('option:selected').html().trim(), 	//新专业
+				"id": $("#teacherId").html(),
+				"newSchoolName": $("#school").find('option:selected').html().trim(), 	//学校
+				"newTeacherName": $('#name').val().trim(),  							//新姓名
+				"newClassName": $('#banji').val().trim(),    							//新班级
+				"newRole": $('#leixing').find('option:selected').html().trim(), 		//新类型
+				"newMajorName": $('#prof').find('option:selected').html().trim(), 	//新专业
 			};
         }else{
         	_url = "../editPageInsertServlet";
         	_data = {
-            	schoolName: $('#school').find('option:selected').text(),
-				role: $('#leixing').find('option:selected').text(),
-				majorName: $('#prof').find('option:selected').text(),
-				teacherName: $('#name').val(),
-				className: $('#banji').val()
+            	"schoolName": $('#school').find('option:selected').text(),
+				"role": $('#leixing').find('option:selected').text(),
+				"majorName": $('#prof').find('option:selected').text(),
+				"teacherName": $('#name').val(),
+				"className": $('#banji').val()
             };
         }
 	    $.ajax({
@@ -221,7 +224,11 @@ $(function(){
 			success : function(data) {
 				if(data.code==200){
 					alert(data.msg);
-					refreshTable();
+					var blankbigArea = $("#bigArea").find("option:selected").text()!="请选择";
+					var blankSchool = $("#schools").find("option:selected").text()!="请选择";
+					if(blankbigArea && blankSchool){
+						refreshTable();
+					}
 					$('#myModal').modal('hide');
 				}else{
 					alert(data.msg);
